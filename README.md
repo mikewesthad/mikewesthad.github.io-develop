@@ -1,4 +1,1 @@
-mikewesthad.github.io
-=====================
-
-Portfolio website
+Portfolio website: [mikewesthad.github.io](http://mikewesthad.github.io/)
