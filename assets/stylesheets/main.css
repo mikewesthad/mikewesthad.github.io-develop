@@ -138,6 +138,7 @@ p {
 }
 .active-nav-item a {
   font-weight: 500;
+  color: #000;
 }
 .nav a {
   text-decoration: none;
