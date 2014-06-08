@@ -73,10 +73,6 @@ table {
 
 .body {
   min-height: 400px;
-
-  /* HACK to center placeholder text */
-  display: table; 
-  margin: auto;
 }
 
 p {
@@ -85,9 +81,8 @@ p {
   letter-spacing: -3px;
   text-transform: lowercase;
 
-  /* HACKS to center placeholder text */
-  vertical-align: middle;
-  display: table-cell; 
+  /* HACK to center placeholder text */
+  line-height: 400px;
 }
 
 
