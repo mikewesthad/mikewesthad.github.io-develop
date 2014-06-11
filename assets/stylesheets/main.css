@@ -64,25 +64,15 @@ table {
   background: #fff;
 }
 
-.row {
-  min-width: 960px;
-  background: #120020;
-  color: #fff;
-  text-align: center;
-}
-
-.body {
-  min-height: 400px;
-}
-
 p {
   font: 200 40px/40px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #120020;
   letter-spacing: -3px;
   text-transform: lowercase;
+  text-align: center;
 
   /* HACK to center placeholder text */
-  line-height: 400px;
+  line-height: 200px;
 }
 
 
@@ -157,9 +147,11 @@ p {
   Footer
 */
 footer {
+  width: 100%;
   font: 300 16px/16px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: -2px;
-  text-transform: lowercase;
+  text-transform: lowercase;  
+  
 }
 footer .copywrite { 
   font-weight: 400;
@@ -197,12 +189,75 @@ footer a:active {
 
 
 /*
-  Image Grid
-  (For displaying a grid of pictures as a navigation menu)
+  Projects page
 */
-.image-grid img {
-  width: 400px;
-  height: 400px;
-  padding: 0 2px;
+.img-grid {
+  margin-left: -5px; /* This is to make the edges of the grid line up with the header and footer */
+  margin-right: -5px;
+}
+.img-grid-elem {
+  display: inline-block;
+  width: 33.33%;
+  padding: 5px;
+}
+.img-grid-elem figure {
+  width: 100%;
+  position: relative;
+}
+.img-grid-elem img{
+  width: 100%;
+  vertical-align: top; /* to remove space between rows */
+}
+.img-grid-elem img:hover {
+  opacity: 0.5;
+}
+.img-grid-elem figcaption {
+  width: 100%;  
+  height: 25px;
+  position: absolute;
+  top: 151px; /* Probably a better way to do this? */
+  left: 0;  
+  background-color: #000;
+  color: #fff;
+  font: 200 25px/25px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: lowercase;
+  letter-spacing: -2px;
+  text-align: center;
+  opacity: 0.75;
+  text-decoration: none;
 }
 
+
+/* 
+  Blog Page
+*/
+
+.single-column {
+}
+.single-column figure { 
+  width: 33.33%;
+  margin: 0 auto;
+  position: relative;
+}
+.single-column img {
+  width: 100%;
+  vertical-align: top;
+}
+.single-column  img:hover {
+  opacity: 0.5;
+}
+.single-column figcaption {
+  width: 100%;  
+  height: 25px;
+  position: absolute;
+  top: 155px; /* Probably a better way to do this? */
+  left: 0;  
+  background-color: #000;
+  color: #fff;
+  font: 200 25px/25px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: lowercase;
+  letter-spacing: -2px;
+  text-align: center;
+  opacity: 0.75;
+  text-decoration: none;
+}
