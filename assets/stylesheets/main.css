@@ -175,6 +175,7 @@ p {
   Footer
 */
 footer {
+  position: relative;
   width: 100%;
   font: 300 16px/16px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: -2px;
@@ -190,7 +191,10 @@ footer .copywrite {
   vertical-align: top;
 }
 footer .social-media {
-  float: right;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
   text-align: right;
   word-spacing: 2px;
 }
