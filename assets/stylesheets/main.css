@@ -105,6 +105,7 @@ p {
   Header
 */
 .primary-header {
+  position: relative;
   padding-top: 22px;
 }
 
@@ -132,9 +133,12 @@ p {
 }
 
 .nav {
+  position: absolute;
   margin-top: 20px;
-  float: right;
+  display: inline-block;
   text-align: right;
+  right: 0;
+  bottom: 5px;
 
 }
 .nav li {
