@@ -130,7 +130,7 @@ h2 {
 .project-header {
   position: relative;
   width: 100%;
-  padding: 15px 0;
+  padding: 20px 0 15px 0;
 }
 .project-header span {
   font: 100 44px/44px "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -164,6 +164,9 @@ h2 {
 }
 .project-header a:active {
   color: #120020;
+}
+.project-description {
+  padding-bottom: 10px;
 }
 
 
