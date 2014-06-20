@@ -100,6 +100,10 @@ table {
 .right {
   padding-left: 5px;
 }
+.center {
+  margin: 0 auto;
+  display: block;
+}
 .col-1-2 img {
   width: 100%;
   vertical-align: top;
@@ -113,7 +117,7 @@ table {
 }
 .col-center p {
   font-size: 20px;
-  line-height: 20px;
+  line-height: 25px;
   letter-spacing: 0px;
   text-align: justify;
   font-weight: 300;
@@ -150,23 +154,29 @@ h2 {
   right: 0px;
   bottom: 17px; /* Hack for now to align to baseline of title */
 }
-.project-header a:link, footer a:visited, footer a:hover, footer a:active {
-  text-decoration: none;
-}
-.project-header a:link {
-  color: #120020;
-}
-.project-header a:visited {
-  color: #120020;
-}
-.project-header a:hover {
-  color: #ed2424;
-}
-.project-header a:active {
-  color: #120020;
-}
+
 .project-description {
   padding-bottom: 10px;
+}
+
+
+/*
+  Hyperlink Styling
+*/
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+}
+a:link {
+  color: #120020;
+}
+a:visited {
+  color: #120020;
+}
+a:hover {
+  color: #ed2424;
+}
+a:active {
+  color: #120020;
 }
 
 
@@ -280,21 +290,6 @@ footer .social-media {
 footer .social-media small {
   font-weight: 100;
   letter-spacing: -1px;
-}
-footer a:link, footer a:visited, footer a:hover, footer a:active {
-  text-decoration: none;
-}
-footer a:link {
-  color: #120020;
-}
-footer a:visited {
-  color: #120020;
-}
-footer a:hover {
-  color: #ed2424;
-}
-footer a:active {
-  color: #120020;
 }
 
 
