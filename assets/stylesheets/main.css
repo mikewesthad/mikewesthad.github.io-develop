@@ -175,20 +175,12 @@ h2 {
 */
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
-}
-a:link {
-  color: #120020;
-}
-a:visited {
-  color: #120020;
+  border-bottom: 1px solid #F73F05;
+  color: #F73F05;
 }
 a:hover {
-  color: #ed2424;
+  border-bottom: none;
 }
-a:active {
-  color: #120020;
-}
-
 
 
 p {
@@ -217,6 +209,7 @@ p {
 }
 .logo a:link, .logo a:visited, .logo a:hover, .logo a:active {
   text-decoration: none;
+  border-bottom: none;
 }
 .logo a:link {
   color: #120020;
@@ -225,7 +218,7 @@ p {
   color: #120020;
 }
 .logo a:hover {
-  color: #ed2424;
+  color: #F73F05;
 }
 .logo a:active {
   color: #120020;
@@ -252,9 +245,10 @@ p {
   font-weight: 400;
   color: #000;
 }
-.nav a {
+.nav a:link, .nav a:visited, .nav a:hover, .nav a:active {
   text-decoration: none;
   text-transform: lowercase;
+  border-bottom: none;
 }
 .nav a:link {
   color: #120020;
@@ -263,11 +257,12 @@ p {
   color: #120020;
 }
 .nav a:hover {
-  color: #ed2424;
+  color: #F73F05;
 }
 .nav a:active {
   color: #120020;
 }
+
 
 
 /* 
@@ -300,6 +295,26 @@ footer .social-media small {
   font-weight: 100;
   letter-spacing: -1px;
 }
+
+footer a:link, footer a:visited, footer a:hover, footer a:active {
+  text-decoration: none;
+  text-transform: lowercase;
+  border-bottom: none;
+}
+footer a:link {
+  color: #120020;
+}
+footer a:visited {
+  color: #120020;
+}
+footer a:hover {
+  color: #F73F05;
+}
+footer a:active {
+  color: #120020;
+}
+
+
 
 
 
