@@ -52,9 +52,10 @@ table {
   General
 */
 *, *:before, *:after {
-  -webkit-box-sizing: border-box;
+  box-sizing:  border-box;
+  -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   /* Useful for debugging: border: 1px solid red !important; */ 
 }
 
@@ -338,8 +339,8 @@ footer a:active {
   Projects page
 */
 .img-grid {
-  margin-left: -5px; /* This is to make the edges of the grid line up with the header and footer */
-  margin-right: -5px;
+  /*margin-left: -5px;*/ /* This is to make the edges of the grid line up with the header and footer */
+  /*margin-right: -5px;*/
 }
 .img-grid-elem {
   display: inline-block;
