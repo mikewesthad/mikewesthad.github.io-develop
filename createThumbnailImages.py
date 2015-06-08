@@ -1,5 +1,5 @@
 import os
-import Image
+from PIL import Image
 
 overrideImages = False
 qualityVal = 95
