@@ -1,3 +1,9 @@
+// Force scrollbar to always show in order to prevent content from shifting when
+// a scrollbar appears. TODO: come up with a better JS-fix.
+html {
+  overflow-y: scroll;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
