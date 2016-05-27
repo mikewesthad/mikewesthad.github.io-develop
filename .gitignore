@@ -1,1 +1,4 @@
-assets/mockup
+node_modules
+*.sublime-workspace
+old
+build
