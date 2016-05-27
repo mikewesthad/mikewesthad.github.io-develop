@@ -1,0 +1,1 @@
+require("./scrub-slideshow.js")();
