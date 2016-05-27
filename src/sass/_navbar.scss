@@ -12,11 +12,28 @@
         padding-left: 10px;
     }
     
-    li.active {
+    $active-nav-color: $deep-purple;
+    $inactive-nav-color: mix($deep-purple, #fff, 40%);
+
+    .nav-underline {
+        margin: 0 auto;
+        width: 0;
+        height: 4px;
+        margin-bottom: -2px;
+        border-bottom: 2px solid $inactive-nav-color;
+        transition: width 0.15s ease-in-out;
+    }
+
+    a.active {
         .nav-underline {
-            width: 100%;
-            margin-bottom: -2px;
-            border-bottom: 2px solid rgb(162, 0, 172);
+            width: 95%;
+            border-bottom-color: $active-nav-color;
         }
+    }
+
+    li a:not(.active):hover {
+        .nav-underline {
+            width: 30%;
+        }        
     }
 }
