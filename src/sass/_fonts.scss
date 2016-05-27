@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Big John';
+  src: url('fonts/big_john-webfont.woff2') format('woff2'),
+       url('fonts/big_john-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Slim Joe';
+  src: url('fonts/slim_joe-webfont.woff2') format('woff2'),
+       url('fonts/slim_joe-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic);
+@import url(https://fonts.googleapis.com/css?family=Cabin:400,500,400italic,500italic,600,600italic,700,700italic);
+
+$big-john-font-stack: 'Big John', sans-serif;
+$slim-joe-font-stack: 'Slim Joe', sans-serif;
+$josefin-sans-font-stack: 'Josefin Sans', sans-serif;
+$cabin-font-stack: 'Cabin', sans-serif;
