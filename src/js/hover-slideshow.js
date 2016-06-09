@@ -1,8 +1,8 @@
-module.exports = HoverSlideshow;
+module.exports = HoverSlideshows;
 
 var utilities = require("./utilities.js");
 
-function HoverSlideshow(slideshowDelay, transitionDuration) {
+function HoverSlideshows(slideshowDelay, transitionDuration) {
     this._slideshowDelay = (slideshowDelay !== undefined) ? slideshowDelay : 
         2000;
     this._transitionDuration = (transitionDuration !== undefined) ? 
@@ -12,7 +12,9 @@ function HoverSlideshow(slideshowDelay, transitionDuration) {
     this.reload();
 }
 
-HoverSlideshow.prototype.reload = function () {
+HoverSlideshows.prototype.reload = function () {
+    // Note: this is currently not really being used. When a page is loaded,
+    // main.js is just re-instancing the HoverSlideshows
     var oldSlideshows = this._slideshows || [];
     this._slideshows = [];
     $(".hover-slideshow").each(function (_, element) {
@@ -28,7 +30,7 @@ HoverSlideshow.prototype.reload = function () {
     }.bind(this));
 };
 
-HoverSlideshow.prototype._findInSlideshows = function (element, slideshows) {
+HoverSlideshows.prototype._findInSlideshows = function (element, slideshows) {
     for (var i = 0; i < slideshows.length; i += 1) {
         if (element === slideshows[i].getElement()) {
             return i;
