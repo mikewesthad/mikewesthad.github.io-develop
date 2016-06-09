@@ -24,12 +24,21 @@ var paths = {
         src: [src + "/**/*.html"],
         dest: dest
     },
+    jade: {
+        src: [src + "/**/*.jade"],
+        exclude: ["!" + src + "/**/_*.jade"],
+        dataFile: src + "/jade-data.json",
+        dest: dest
+    },
     sass: {
         src: [src + "/sass/**/*.{scss,sass}"],
+        include: ["node_modules/bootstrap-sass/assets/stylesheets",
+            "node_modules/font-awesome/scss"],
         dest: dest
     },
     jsLibs: {
-        src: [src + "/js/libs/**/*.js"],
+        src: [src + "/js/libs/**/*.js", 
+            "node_modules/bootstrap-sass/assets/javascripts/bootstrap.js"],
         outputFile: "libs.js",
         dest: dest + "/js"
     },
@@ -44,7 +53,7 @@ var paths = {
         dest: dest + "/images"
     },
     fonts: {
-        src: [src + "/fonts/**/*.*"],
+        src: [src + "/fonts/**/*.*", "node_modules/font-awesome/fonts/*.*"],
         dest: dest + "/fonts"
     },
     deploy: {
@@ -78,6 +87,9 @@ var path = require("path");
 var fs = require("fs");
 var runSequence = require("run-sequence");
 var gulpif = require("gulp-if");
+var pug = require("gulp-pug"); // Pug === Jade templates
+var data = require("gulp-data");
+var responsive = require("gulp-responsive");
 
 // Check the command line to see if this is a production build
 var isProduction = (gutil.env.p || gutil.env.production);
@@ -99,6 +111,18 @@ gulp.task("copy-html", function () {
         .pipe(liveReload());
 });
 
+gulp.task("jade", function () {
+    return gulp.src(paths.jade.src.concat(paths.jade.exclude))
+        .pipe(data(function(file, callback) {
+            return fs.readFile(paths.jade.dataFile, "utf8", function (err, data) {
+                callback(err, JSON.parse(data));
+            });
+        }))
+        .pipe(pug())
+        .pipe(gulp.dest(paths.jade.dest))
+        .pipe(liveReload());
+});
+
 // Turn SASS in src/ into css in build/, autoprefixing CSS vendor prefixes and
 // generating sourcemaps.  Pipe changes to LiveReload to trigger a reload.
 gulp.task("sass", function () {
@@ -106,7 +130,7 @@ gulp.task("sass", function () {
         .pipe(sourcemaps.init())
             .pipe(sass({ 
                 outputStyle: "compressed",
-                includePaths: ["node_modules/bootstrap-sass/assets/stylesheets"] 
+                includePaths: paths.sass.include
             }).on("error", sass.logError))
             .pipe(autoprefixer({
                 browsers: [
@@ -185,6 +209,35 @@ gulp.task("images", function () {
         .pipe(gulp.dest(paths.images.dest));
 });
 
+gulp.task("resize-images", function () {
+    return gulp.src([
+            "src/original-images/**/*.{png,PNG,gif,GIF,jpg,JPG}"
+        ])
+        .pipe(responsive({
+            "**/*.*": [{
+                width: 1200,
+                rename: { suffix: "-large", extname: ".jpg" }
+            }, {
+                width: 800,
+                rename: { suffix: "-medium", extname: ".jpg" }                
+            }, {
+                width: 300,
+                rename: { suffix: "-small", extname: ".jpg" }                
+            }, {
+                rename: { suffix: "-original", extname: ".jpg" }                
+            }]
+        }, {
+            quality: 90,
+            format: "jpeg",
+            progressive: true,
+            withMetadata: true,
+            withoutEnlargement: true,
+            skipOnEnlargement: true,
+            errorOnEnlargement: false
+        })).on("error", gutil.log)
+        .pipe(gulp.dest("src/images"))
+});
+
 // Take any (new) fonts from src/fonts over to build/fonts.
 gulp.task("fonts", function () {
     return gulp.src(paths.fonts.src)
@@ -195,6 +248,7 @@ gulp.task("fonts", function () {
 // The build task will run all the individual build-related tasks above.
 gulp.task("build", [
     "copy-html",
+    "jade",
     "sass",
     "images",
     "fonts",
@@ -213,6 +267,7 @@ gulp.task("build", [
 gulp.task("watch", function () {
     liveReload.listen(); // Start the LiveReload server
     gulp.watch(paths.html.src, ["copy-html"]);
+    gulp.watch(paths.jade.src.concat(paths.jade.dataFile), ["jade"]);
     gulp.watch(paths.jsLibs.src, ["js-libs"]);
     gulp.watch(paths.js.src, ["js-lint", "js-browserify"]);
     gulp.watch(paths.sass.src, ["sass"]);
