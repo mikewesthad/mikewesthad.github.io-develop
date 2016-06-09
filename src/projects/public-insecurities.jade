@@ -1,0 +1,28 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    - 
+        var projectName = "public-insecurities";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "Public Insecurities";
+        var projectHeadline = " is about what we Google when no one is watching.";
+        var projectDetails = [
+            "2014",
+            "900 North Michigan",
+            "Tags: Art"
+        ];
+        var projectImageNames = [
+            "hhear-large.jpg",
+            "nor-large.jpg",
+            "inside-large.jpg",
+            "outside-large.jpg"
+        ];
+
+block projectDescription
+    +titledSection("Overview") 
+        p Public Insecurities is about insecurities pulled from Google's search &ldquo;suggestions&rdquo; &mdash; the search completions that drop down from the search bar as you type. These suggestions come from private searches, recorded by Google, which are anonymized and re-presented to us. By typing a few, charged words into a search bar, expressions of collective, private insecurities can be uncovered. 
+
+        p This piece is a single channel video projection that was installed in the 900 N Michigan Ave Bloomingdale's in Chicago in 2014. The below video was played on a loop in a secluded space on the top floor of the mall.
+
+    +fullWidthSection()        
+        <iframe src="https://player.vimeo.com/video/103603472" width="100%" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>

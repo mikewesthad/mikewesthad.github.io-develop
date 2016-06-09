@@ -1,0 +1,29 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    - 
+        var projectName = "render-sketch-game";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "Render Sketch Game";
+        var projectHeadline = " is gesture drawing for 3D.";
+        var projectDetails = [
+            "2015",
+            "3D Modeling, Blender",
+            "Tags: Art"
+        ];
+        var projectImageNames = [
+            "placeboeffect-large.jpg", 
+            "8bitcrunch-large.jpg",
+            "blurscape-large.jpg", 
+            "polycrunch-large.jpg",
+            "nymmetry-large.jpg",
+            "snownight-large.jpg",
+            "standpost-large.jpg",
+            "softbodies-large.jpg"
+        ];
+
+block projectDescription
+    +titledSection("Overview")
+        p Render Sketch Game was started by #[a(href="//twitter.com/ryangreen8/status/464796635424641024") Ryan Green]. 3D modeling can be tedious &amp; detail-oriented, so the idea is to borrow from #[a(href="//en.wikipedia.org/wiki/Gesture_drawing") gesture drawing]: set a 10 minute timer and sketch until time is up.
+
+        p These are a collection of my render sketches. The full site of my sketches is #[a(href="//www.mikewesthad.com/rendersketchgame") here]. Ryan Green and Josh Larsons's tumblr of everyone's render sketches is #[a(href="//rendersketchgame.tumblr.com") here].

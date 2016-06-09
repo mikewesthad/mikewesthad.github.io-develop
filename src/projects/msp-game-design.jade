@@ -1,0 +1,36 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    - 
+        var projectName = "msp-game-design";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "";
+        var projectHeadline = "I designed &amp; taught a middle school camp in game design.";
+        var projectDetails = [
+            "2014",
+            "SAIC",
+            "Collaboration",
+            "Tags: Teaching"
+        ];
+        var projectImageNames = [
+            "working-5-large.jpg",
+            "working-1-large.jpg",
+            "working-2-large.jpg",
+            "storyboard-1-large.jpg",
+            "photoshop-1-large.jpg",
+            "stencyl-1-original.jpg",
+            "stencyl-3-original.jpg",
+            "presentation-1-large.jpg",
+            "final-exhibit-2-large.jpg",
+            "final-exhibit-1-large.jpg"
+        ];
+
+block projectDescription
+    +titledSection("Overview") 
+        p I designed and taught a middle school game design camp with #[a(href="//kaylalewis.net") Kayla Lewis] at the School of the Art Institute (SAIC). See the course #[a(href="//www.mspgamedesign.com/index.html") website] for more details and live versions of student projects.
+
+        p Students explored the potential of games by creating three different types of games with three different technologies: platformer games using #[a(href="//www.stencyl.com") Stencyl] game maker; hand-drawn, point-and-click exploration games in HTML &amp; CSS; and interactive text games in JavaScript.
+
+        p While all the games were digital, the process for making them was a hybrid of both non-digital (&ldquo;offline&rdquo;) and digital (&ldquo;online&rdquo;) techniques, including: sketching, storyboarding, writing, diagramming, simulating, scanning, digital drawing and programming.
+
+        p Because presenting work and receiving feedback is integral to any artistic practice, students regularly presented their work &mdash; both finished versions and works-in-progress &mdash; to the rest of the class. On the last day, we held an exhibition for family and friends which showcased both the process and final works.

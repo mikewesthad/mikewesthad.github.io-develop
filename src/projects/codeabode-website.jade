@@ -1,0 +1,29 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    - 
+        var projectName = "codeabode-website";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "";
+        var projectHeadline = "I was hired to design a responsive, modern website for a code school.";
+        var projectDetails = [
+            "2015",
+            "Collaboration",
+            "Client: CodeAbode",
+            "Tags: Art"
+        ];
+        var projectImageNames = [
+            "responsive-showcase-large.jpg",
+            "hd-cropped-index-large.jpg",
+            "hd-cropped-curriculum-scrolled-large.jpg",
+            "hd-full-index-large.jpg",
+            "hd-full-about-large.jpg"
+        ];
+
+block projectDescription
+    +titledSection("Overview") 
+        p In collaboration with #[a(href="//rextwedt.com", target="_blank") Rex Twedt], I designed and implemented a modern, responsive website for CodeAbode, a Chicago-based, not-for-profit code school.
+
+        p A live version of the design is hosted #[a(href="//codeabodechicago.github.io/CodeAbode-Website") here].
+
+        p The site was built so that it could be easily maintained and updated when the schedule changes or when new courses are offered. It was built with a modern set of tools, including Bootstrap, Gulp, SASS, HTML templating and PHP. The source code can be found #[a(href="//github.com/CodeAbodeChicago/CodeAbode-Website") here]. 

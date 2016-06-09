@@ -1,0 +1,27 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    - 
+        var projectName = "ofbook";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "ofBook";
+        var projectHeadline = " is a community-written book on creative coding in C++.";
+        var projectDetails = [
+            "2014 - Present",
+            "<a href='//github.com/openframeworks/ofBook'>Source Code</a>",
+            "Collaboration",
+            "Tags: Teaching"
+        ];
+        var projectImageNames = [
+            "tangents-original.jpg",
+            "intro-screenshot-large.jpg",
+            "meshes-screenshot-large.jpg",
+            "rotating-original.jpg",
+            "editing-vectors-original.jpg"
+        ];
+
+block projectDescription
+    +titledSection("Overview") 
+        p ofBook is an open source book about creative coding in C++ using the #[a(href="//openframeworks.cc") openFrameworks] library. It covers everything from getting started to iOS applications to game design. ofBook is available online as a web book #[a(href="//openframeworks.cc/ofBook/chapters/foreword.html") here].
+
+        p I two chapters on graphics for the book. #[a(href="//openframeworks.cc/ofBook/chapters/intro_to_graphics.html") "Introduction to Graphics"] is a chapter that guides the reader through the world of 2D graphics by creating complex forms from simple shapes. #[a(href="//openframeworks.cc/ofBook/chapters/intro_to_graphics.html") "Generative Meshes"] is a chapter about generating 3D graphics by applying simple rules to some data.
