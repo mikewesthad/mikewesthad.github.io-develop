@@ -1,59 +1,36 @@
-module.exports = {
-    init: init
+module.exports = MainNav;
+
+function MainNav(loader) {
+    this._loader = loader;
+    this._$navLinks = $("#main-nav a");
+    this._$activeNav = this._$navLinks.find(".active"); 
+    this._$navLinks.on("click", this._onNavClick.bind(this));
+}
+
+MainNav.prototype.setActiveFromUrl = function () {
+    var url = location.pathname;
+    if (url === "/index.html" || url === "/") {
+        this._activateLink(this._$navLinks.filter("#about-link"));
+    }
+    else if (url === "/work.html") {        
+        this._activateLink(this._$navLinks.filter("#work-link"));
+    }
 };
 
-var navLinkSelector = "#main-nav a";
-var activeNavLinkSelector = navLinkSelector + ".active";
-var contentContainerSelector = "#content";
-var $content;
-var $activeNavItem;
+MainNav.prototype._activateLink = function ($link) {
+    if (this._$activeNav.length) this._$activeNav.removeClass("active");
+    $link.addClass("active");
+    this._$activeNav = $link;
+};
 
-function init() {
-    $content = $(contentContainerSelector);
-    $activeNavItem = $(activeNavLinkSelector);
-    $(navLinkSelector).on("click", onNavClick);
-}
-
-function onNavClick(e) {
+MainNav.prototype._onNavClick = function (e) {
     e.preventDefault();
+
     var $target = $(e.currentTarget);
-    if ($target.is($activeNavItem)) return;
-    if ($activeNavItem.length) $activeNavItem.removeClass("active");
-    $target.addClass("active");
-    $activeNavItem = $target;
-    var pageName = $target.data("page-name");
-    loadPage(pageName);    
-}
+    if ($target.is(this._$activeNav)) return;
 
-function loadPage(pageName) {
-    var url = "html-pages/" + pageName + ".html";
-    var fadeDuration = 200;
+    this._activateLink($target);
 
-    // Fade then empty the current contents
-    $content.fadeOut(fadeDuration, function () {
-       $content.empty();
-       $content.load(url, onContentFetched);
-    });
-
-    // Fade the new content in after it has been fetched
-    function onContentFetched(responseText, textStatus, jqXhr) {
-        if (textStatus === "error") {
-            alert("There was a problem loading the page.");
-            return;
-        }
-
-        $content.fadeIn(fadeDuration);
-
-        // If the page needs any specific JS functionality, load it
-        if (pageName === "work") {                
-            require("./scrub-slideshow.js")();
-            require("./hover-overlay.js")();
-
-            var hoverSlideshow = require("./hover-slideshow.js");
-            hoverSlideshow.init(2000, 1000);
-
-            var portfolioFilter = require("./portfolio-filter.js");
-            portfolioFilter.init();
-        }
-    }
-}
+    var url = $target.attr("href");
+    this._loader.loadPage(url, {}, true);    
+};
