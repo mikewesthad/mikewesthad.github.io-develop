@@ -7,6 +7,25 @@
         font-size: 40px;
     }
 
+    .navbar-toggle {
+        background-color: white !important;
+        border-color: $deep-purple;
+        border-width: 2px;
+
+        .icon-bar {
+            background-color: $deep-purple;
+        }
+        
+        &:hover, &:active {
+            background-color: $deep-purple !important;
+
+            .icon-bar {
+                background-color: white
+            }
+        }
+
+    }
+
     li a {
         font-size: 17px;
         padding-left: 10px;
@@ -35,5 +54,31 @@
         .nav-underline {
             width: 30%;
         }        
+    }
+
+    @include breakpoint-only(sm) { 
+        .navbar-brand {
+            font-size: 35px;
+        }        
+    }
+
+    @include breakpoint-only(xs) {
+        margin-bottom: 25px;
+        $new-height: 65px;
+        $brand-vertical-padding: 10px;
+        min-height: $new-height;
+
+        .navbar-brand {
+            height: $new-height;
+            line-height: $new-height - (2 * $brand-vertical-padding);
+            padding-top: $brand-vertical-padding;
+            padding-bottom: $brand-vertical-padding;
+            font-size: 20px;
+        }
+
+        .navbar-toggle {
+            margin-top: ($new-height - 34px) / 2;
+            margin-bottom: ($new-height - 34px) / 2;           
+        } 
     }
 }
