@@ -6,6 +6,17 @@ $fa-font-path: "fonts/";
 @import "bootstrap";
 
 @import "mixins";
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+  margin-bottom: $footer-height;
+}
+
+
 @import "scrollbar";
 @import "navbar";
 @import "portfolio-grid";@import "about";@import "contact";@import "footer";
