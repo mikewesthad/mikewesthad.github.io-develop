@@ -1,4 +1,3 @@
-@import "fonts";
 @import "variables";
 
 $fa-font-path: "fonts/";
@@ -6,6 +5,7 @@ $fa-font-path: "fonts/";
 @import "bootstrap";
 
 @import "mixins";
+@import "fonts";
 
 html {
     min-height: 100%;
@@ -19,4 +19,9 @@ body {
 
 @import "scrollbar";
 @import "navbar";
-@import "portfolio-grid";@import "about";@import "contact";@import "footer";@import "project-page";@import "gallery-image-styling";
+@import "footer";
+@import "portfolio";
+@import "about";
+@import "contact";
+@import "project-page";
+@import "gallery-image-styling";
