@@ -1,0 +1,32 @@
+extend ./jade-layouts/_basic-page.jade
+
+block content
+  #portfolio.container
+    nav#portfolio-nav
+      ul
+        li 
+          a(href="", data-category="all") All
+        li
+          a(href="", data-category="art") Art
+        li
+          a(href="", data-category="teaching") Teaching
+        br.visible-xs
+        li
+          a(href="", data-category="development") Development
+        li
+          a(href="", data-category="sketches") Sketches
+    #portfolio-grid
+      each project in projects
+        - 
+          var categories = project.categories.join(",");
+          var caption = project.caption;
+          var images = project.images;
+          var name = project.name;
+          var imagePath = "/images/projects/" + name + "/";
+          var htmlPath = "/projects/" + name + ".html";
+        div.project.col-md-4.col-sm-6.col-xs-12(data-categories=categories)
+          a(href=htmlPath data-name=name)
+            div.hover-slideshow.hover-title
+              - for (var j = 0; j < images.length; j += 1)
+                img(src=imagePath+images[j])
+              .title-caption= caption
