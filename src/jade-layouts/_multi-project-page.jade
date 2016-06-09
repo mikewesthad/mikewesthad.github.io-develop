@@ -1,0 +1,35 @@
+extend ./_basic-page.jade
+
+mixin gallery(projectImagePath, projectImageNames)
+    .row.project-description-section.image-gallery
+        .image-gallery-selected
+        .image-gallery-thumbnails
+            each imageName in projectImageNames
+                img(src= projectImagePath + imageName)
+
+mixin titledSection(title)
+    .row.project-description-section
+        .caption-left.col-md-2!= title
+        .section-right.col-md-10 
+            block
+
+mixin fullWidthSection()
+    .row.project-description-section
+        .col-xs-12 
+            block
+
+block content
+    block variables
+    
+    .container.project-page(id= projectTitle)
+        #project-headline
+            .project-headline
+                span.project-title!= projectTitle  
+                != projectHeadline
+            ul.details.list-unstyled                
+                each detail, index in projectDetails
+                    li!= detail
+                    if index !== (projectDetails.length - 1)
+                        | |
+
+        block projectDescription
