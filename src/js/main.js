@@ -1,22 +1,23 @@
 var Loader = require("./page-loader.js");
 var MainNav = require("./main-nav.js");
-var HoverSlideshow = require("./hover-slideshow.js");
+var HoverSlideshows = require("./hover-slideshow.js");
 var PortfolioFilter = require("./portfolio-filter.js");
-var ImageGallery = require("./image-gallery.js");
-
-var hoverSlideshow, portfolioFilter;
+var ImageGalleries = require("./image-gallery.js");
 
 var loader = new Loader(onPageLoad);
 
 var mainNav = new MainNav(loader);
 mainNav.setActiveFromUrl();
 
+// Widgets
+var hoverSlideshows, portfolioFilter, imageGalleries;
+
 onPageLoad();
 
 function onPageLoad() {
-    hoverSlideshow = new HoverSlideshow();
+    hoverSlideshows = new HoverSlideshows();
     portfolioFilter = new PortfolioFilter(loader);
-    ImageGallery.init();
+    imageGalleries = new ImageGalleries();
     objectFitImages();
     smartquotes();
 }

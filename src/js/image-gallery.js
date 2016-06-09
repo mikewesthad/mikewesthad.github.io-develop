@@ -1,12 +1,11 @@
-module.exports = {
-    init: init
-};
+module.exports = ImageGalleries;
 
-function init() {
+function ImageGalleries() { 
+    this._imageGalleries = [];
     $(".image-gallery").each(function (index, element) {
-        new ImageGallery($(element));
-    });
-};
+        this._imageGalleries.push(new ImageGallery($(element)));
+    }.bind(this));
+}
 
 function ImageGallery($container) {
     this._$container = $container;
@@ -30,19 +29,21 @@ function ImageGallery($container) {
     this._$thumbnailContainer.find("img").on("click", this._onClick.bind(this));
 }
 
-ImageGallery.prototype._switchActiveImage = function (index) {    
+ImageGallery.prototype._switchActiveImage = function (index) { 
     this._index = index;
     this._$selectedThumbnail.removeClass("active");
     this._$selectedThumbnail = this._$images[index];
     this._$selectedThumbnail.addClass("active");
 
-    var src = this._$selectedThumbnail.attr("src");
-    this._$activeImage.attr("src", src); 
+    // Object image fit polyfill breaks jQuery attr(...), so fallback to just 
+    // using element.src
+    var src = this._$selectedThumbnail.get(0).src;
+    this._$activeImage.get(0).src = src; 
 
     var imageName = src.split("/").pop().split(".");
     imageName.pop();
     imageName.join("");
-    this._$activeImage.attr("id", imageName);  
+    this._$activeImage.attr("id", imageName);
 };
 
 ImageGallery.prototype._onClick = function (e) {
