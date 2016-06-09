@@ -1,0 +1,25 @@
+.image-gallery-selected {
+    
+    #anderson-student-cards-large,
+    #anderson-situation-cards-large,
+    #anderson-iteration-large {
+        object-fit: contain;
+    }
+    
+    #evolved-text-large, 
+    #elevate-text-large, 
+    #gras-letter-large, 
+    #gras-notice-large {
+        object-fit: contain;
+    }    
+
+    #responsive-showcase-large,
+    #hd-full-index-large,
+    #hd-full-about-large,
+    #hd-full-curriculum-large,
+    #hd-cropped-index-large,
+    #hd-full-schedule-large,
+    #hd-cropped-curriculum-scrolled-large {
+        object-fit: contain;
+    }
+}
