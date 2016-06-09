@@ -1,6 +1,8 @@
 @import "fonts";
 @import "variables";
 
+$fa-font-path: "fonts/";
+@import "font-awesome";
 @import "bootstrap";
 
 @import "scrollbar";
