@@ -1,36 +1,26 @@
-// -- ON INITIAL LOAD ----------------------------------------------------------
-
-smartquotes();
-
-var widgets = [];
-
 var Loader = require("./page-loader.js");
-var loader = new Loader(onReload);
-
 var MainNav = require("./main-nav.js");
-var mainNav = new MainNav(loader);
-
 var HoverSlideshow = require("./hover-slideshow.js");
-var hoverSlideshow = new HoverSlideshow();
-
 var PortfolioFilter = require("./portfolio-filter.js");
-var portfolioFilter = new PortfolioFilter(loader);
-
 var ImageGallery = require("./image-gallery.js");
-ImageGallery.init();
 
-$(document).on("click", function (e) {
-    hoverSlideshow.reload();
-});
+var hoverSlideshow, portfolioFilter;
 
-function onReload() {
-    hoverSlideshow.reload();
+var loader = new Loader(onPageLoad);
+
+var mainNav = new MainNav(loader);
+mainNav.setActiveFromUrl();
+
+onPageLoad();
+
+function onPageLoad() {
+    hoverSlideshow = new HoverSlideshow();
     portfolioFilter = new PortfolioFilter(loader);
     ImageGallery.init();
-
+    objectFitImages();
+    smartquotes();
 }
 
-mainNav.setActiveFromUrl();
 
 // We've hit the landing page, load the about page
 // if (location.pathname.match(/^(\/|\/index.html|index.html)$/)) {
