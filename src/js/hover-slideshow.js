@@ -1,98 +1,127 @@
-module.exports = {
-    init: init
+module.exports = HoverSlideshow;
+
+var utilities = require("./utilities.js");
+
+function HoverSlideshow(slideshowDelay, transitionDuration) {
+    this._slideshowDelay = (slideshowDelay !== undefined) ? slideshowDelay : 
+        2000;
+    this._transitionDuration = (transitionDuration !== undefined) ? 
+        _transitionDuration : 1000;   
+
+    this._slideshows = [];
+    this.reload();
+}
+
+HoverSlideshow.prototype.reload = function () {
+    var oldSlideshows = this._slideshows || [];
+    this._slideshows = [];
+    $(".hover-slideshow").each(function (_, element) {
+        var $element = $(element);
+        var index = this._findInSlideshows(element, oldSlideshows);
+        if (index !== -1) {
+            var slideshow = oldSlideshows.splice(index, 1)[0];
+            this._slideshows.push(slideshow);
+        } else {
+            this._slideshows.push(new Slideshow($element, this._slideshowDelay,
+                this._transitionDuration));
+        }
+    }.bind(this));
 };
 
-function init(slideshowDelay, transitionDuration) {
-    $(".hover-slideshow").each(function (index, element) {
-        setupSlideshow($(element), slideshowDelay, transitionDuration);
-    });
+HoverSlideshow.prototype._findInSlideshows = function (element, slideshows) {
+    for (var i = 0; i < slideshows.length; i += 1) {
+        if (element === slideshows[i].getElement()) {
+            return i;
+        }
+    }
+    return -1;
 };
 
-function setupSlideshow($container, slideshowDelay, transitionDuration) {
-    var images = $container.find("img");
-    var numImages = images.length;
-    if (numImages <= 1) return;
+function Slideshow($container, slideshowDelay, transitionDuration) {
+    this._$container = $container;
+    this._slideshowDelay = slideshowDelay;
+    this._transitionDuration = transitionDuration;
+    this._timeoutId = null;
+    this._imageIndex = 0;
+    this._$images = [];
 
-    // Setup the images
-    var $images = []; // Cache a jQuery object of each image
-    images.each(function (index, element) {
-        $image = $(element);
+    // Set up and cache references to images
+    this._$container.find("img").each(function (index, element) {
+        var $image = $(element);
         $image.css({
             position: "absolute",
-            // top: "0",
-            // left: "0",
+            top: "0",
+            left: "0",
             zIndex: (index === 0) ? 2 : 0 // First image should be on top
         });
-        $images.push($image);
-    });
+        this._$images.push($image);
+    }.bind(this));
 
-    // $container.css({
-    //     width: $images[0].width(),
-    //     height: $images[0].height()
-    // })
+    // Determine whether to bind interactivity
+    this._numImages = this._$images.length;
+    if (this._numImages <= 1) return;
 
-    var imageIndex = 0;
-    var timeoutId = null;
+    // Bind event listeners
+    this._$container.on("mouseenter", this._onEnter.bind(this));
+    this._$container.on("mouseleave", this._onLeave.bind(this));
 
-    $container.on("mouseenter", onEnter);
-    $container.on("mouseleave", onExit);
+}
 
-    function onEnter(e) {  
-        // First transition should happen pretty soon after hovering in order
-        // to clue the user into what is happening
-        timeoutId = setTimeout(advanceSlideshow, 500);
-    }
+Slideshow.prototype.getElement = function () {
+    return this._$container.get(0);
+};
 
-    function onExit(e) {
-        clearInterval(timeoutId);  
-        timeoutId = null;      
-    }
+Slideshow.prototype.get$Element = function () {
+    return this._$container;
+};
 
-    function advanceSlideshow() {
-        imageIndex += 1;
+Slideshow.prototype._onEnter = function () {
+    // First transition should happen pretty soon after hovering in order
+    // to clue the user into what is happening
+    this._timeoutId = setTimeout(this._advanceSlideshow.bind(this), 500);
+};
 
-        // Move the image from 2 steps ago down to the bottom z-index and make
-        // it invisible
-        if (numImages >= 3) {
-            var i = wrapIndex(imageIndex - 2, numImages);
-            $images[i].css({
-                zIndex: 0,
-                opacity: 0
-            });
-            $images[i].stop();
-        }
+Slideshow.prototype._onLeave = function () {
+    clearInterval(this._timeoutId);  
+    this._timeoutId = null;      
+};
 
-        // Move the image from 1 steps ago down to the middle z-index and make
-        // it completely visible
-        if (numImages >= 2) {
-            var i = wrapIndex(imageIndex - 1, numImages);
-            $images[i].css({
-                zIndex: 1,
-                opacity: 1
-            });
-            $images[i].stop();
-        }
+Slideshow.prototype._advanceSlideshow = function () {
+    this._imageIndex += 1;
 
-        // Move the current image to the top z-index and fade it in
-        imageIndex = wrapIndex(imageIndex, numImages);
-        $images[imageIndex].css({
-            zIndex: 2,
+    // Move the image from 2 steps ago down to the bottom z-index and make
+    // it invisible
+    if (this._numImages >= 3) {
+        var i = utilities.wrapIndex(this._imageIndex - 2, this._numImages);
+        this._$images[i].css({
+            zIndex: 0,
             opacity: 0
         });
-        $images[imageIndex].animate({
+        this._$images[i].stop();
+    }
+
+    // Move the image from 1 steps ago down to the middle z-index and make
+    // it completely visible
+    if (this._numImages >= 2) {
+        var i = utilities.wrapIndex(this._imageIndex - 1, this._numImages);
+        this._$images[i].css({
+            zIndex: 1,
             opacity: 1
-        }, transitionDuration);
-
-        // Schedule next transition
-        timeoutId = setTimeout(advanceSlideshow, slideshowDelay);
+        });
+        this._$images[i].stop();
     }
-}
 
-function wrapIndex(index, length) {
-    var wrappedIndex = (index % length); 
-    if (wrappedIndex < 0) {
-        // If negative, flip the index so that -1 becomes the last item in list 
-        wrappedIndex = length + wrappedIndex;
-    }
-    return wrappedIndex;
-}
+    // Move the current image to the top z-index and fade it in
+    this._imageIndex = utilities.wrapIndex(this._imageIndex, this._numImages);
+    this._$images[this._imageIndex].css({
+        zIndex: 2,
+        opacity: 0
+    });
+    this._$images[this._imageIndex].animate({
+        opacity: 1
+    }, this._transitionDuration);
+
+    // Schedule next transition
+    this._timeoutId = setTimeout(this._advanceSlideshow.bind(this), 
+        this._slideshowDelay);
+};
