@@ -8,6 +8,10 @@ $big-john-font-stack: 'Big John', sans-serif;
 $slim-joe-font-stack: 'Slim Joe', sans-serif;
 $josefin-sans-font-stack: 'Josefin Sans', sans-serif;
 $cabin-font-stack: 'Cabin', sans-serif;
+// $slim-joe-font-stack: 'Slim Joe', sans-serif;
+// $josefin-sans-font-stack: 'Josefin Sans', sans-serif;
+// $cabin-font-stack: 'Cabin', sans-serif;
+$raleway-font-stack: 'Raleway', sans-serif;
 
 
 
@@ -23,9 +27,9 @@ $cabin-font-stack: 'Cabin', sans-serif;
 // $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 // $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
-$font-family-base:        $josefin-sans-font-stack;
+$font-family-base:        $raleway-font-stack;
 
-$font-size-base:          24px;
+$font-size-base:          22px;
 // $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
 // $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 
