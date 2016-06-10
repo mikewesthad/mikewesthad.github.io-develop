@@ -61,7 +61,7 @@ var paths = {
         dest: dest
     },
     deploy: {
-        src: [dest + "/**/*.*"]
+        src: [dest + "/**/{*,*.*}"] // Match files with & without extensions
     }
 };
 
@@ -317,9 +317,9 @@ gulp.task("push:gh-pages", function () {
     return gulp.src(paths.deploy.src, { base: dest })
         .pipe(ghPages({
             remoteUrl: 
-                "https://github.com/mikewesthad/mikwesthad.github.io.git",
+                "https://github.com/mikewesthad/mikewesthad.github.io.git",
             branch: "master",
-            message: "Rebuild from mikewesthad.github.io-develop [timestamp]"
+            message: "Rebuild from mikewesthad.github.io-develop"
         }));
 });
 
