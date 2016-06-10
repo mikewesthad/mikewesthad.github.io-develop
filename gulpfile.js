@@ -220,16 +220,16 @@ gulp.task("resize-images", function () {
         ])
         .pipe(responsive({
             "**/*.*": [{
+                width: 1920,
+                height: 1080,
+                max: true,
+                rename: { suffix: "-xlarge", extname: ".jpg" }
+            },{
                 width: 1200,
                 rename: { suffix: "-large", extname: ".jpg" }
             }, {
-                width: 800,
-                rename: { suffix: "-medium", extname: ".jpg" }                
-            }, {
                 width: 300,
                 rename: { suffix: "-small", extname: ".jpg" }                
-            }, {
-                rename: { suffix: "-original", extname: ".jpg" }                
             }]
         }, {
             quality: 90,
@@ -237,7 +237,7 @@ gulp.task("resize-images", function () {
             progressive: true,
             withMetadata: true,
             withoutEnlargement: true,
-            skipOnEnlargement: true,
+            skipOnEnlargement: false,
             errorOnEnlargement: false
         })).on("error", gutil.log)
         .pipe(gulp.dest("src/images"))
