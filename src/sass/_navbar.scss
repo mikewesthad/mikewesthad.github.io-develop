@@ -80,5 +80,14 @@
             margin-top: ($new-height - 34px) / 2;
             margin-bottom: ($new-height - 34px) / 2;           
         } 
+        
+        // Center links and make sure underlines are only as long as the a tag
+        li {
+            display: block;
+            text-align: center;
+            a {
+                display: inline-block;
+            }
+        }
     }
 }

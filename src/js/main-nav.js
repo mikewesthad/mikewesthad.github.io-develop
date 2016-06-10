@@ -2,7 +2,8 @@ module.exports = MainNav;
 
 function MainNav(loader) {
     this._loader = loader;
-    this._$navLinks = $("#main-nav a");
+    this._$nav = $("#main-nav");
+    this._$navLinks = this._$nav.find("a");
     this._$activeNav = this._$navLinks.find(".active"); 
     this._$navLinks.on("click", this._onNavClick.bind(this));
 }
@@ -32,6 +33,9 @@ MainNav.prototype._activateLink = function ($link) {
 
 MainNav.prototype._onNavClick = function (e) {
     e.preventDefault();
+
+    // Close the nav. This only matters if we are on mobile
+    this._$nav.collapse("hide");
 
     var $target = $(e.currentTarget);
     if ($target.is(this._$activeNav)) return;
