@@ -71,12 +71,12 @@ PortfolioFilter.prototype._filterProjects = function (category) {
     // Loop through all projects
     this._$projects.forEach(function ($element) {
         // Stop all animations
-        $element.stop();
+        $element.velocity("stop");
         // If an element is not selected: drop z-index & animate opacity -> hide
         var selectedIndex = $selectedElements.indexOf($element); 
         if (selectedIndex === -1) {
             $element.css("zIndex", -1);
-            $element.animate({
+            $element.velocity({
                 opacity: 0
             }, this._transitionDuration, "easeInOutCubic", function () {
                 $element.hide();
@@ -87,7 +87,7 @@ PortfolioFilter.prototype._filterProjects = function (category) {
             $element.show();
             $element.css("zIndex", 0);
             var newPos = this._indexToXY(selectedIndex);
-            $element.animate({ 
+            $element.velocity({ 
                 opacity: 1,
                 top: newPos.y + "px",
                 left: newPos.x + "px"
@@ -97,9 +97,9 @@ PortfolioFilter.prototype._filterProjects = function (category) {
 }
 
 PortfolioFilter.prototype._animateGridHeight = function (numElements) {
-    this._$grid.stop();
+    this._$grid.velocity("stop");
     var curRows = Math.ceil(numElements / this._cols);
-    this._$grid.animate({
+    this._$grid.velocity({
         height: this._imageHeight * curRows + 
             this._gridSpacing * (curRows - 1) + "px"
     }, this._transitionDuration);
