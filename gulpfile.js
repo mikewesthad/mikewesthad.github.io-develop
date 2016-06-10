@@ -219,12 +219,14 @@ gulp.task("resize-images", function () {
             "src/original-images/**/*.{png,PNG,gif,GIF,jpg,JPG}"
         ])
         .pipe(responsive({
-            "**/*.*": [{
-                width: 1920,
-                height: 1080,
-                max: true,
-                rename: { suffix: "-xlarge", extname: ".jpg" }
-            },{
+            "**/*.*": [
+            // {
+            //     width: 1920,
+            //     height: 1080,
+            //     max: true,
+            //     rename: { suffix: "-xlarge", extname: ".jpg" }
+            // },
+            {
                 width: 1200,
                 rename: { suffix: "-large", extname: ".jpg" }
             }, {
@@ -335,6 +337,10 @@ gulp.task("deploy:git", function () {
 
 gulp.task("clean:dest", function () {
     return del(dest)
+});
+
+gulp.task("clean:images", function () {
+    return del(paths.images.src)
 });
 
 

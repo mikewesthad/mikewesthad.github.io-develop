@@ -12,9 +12,7 @@ mixin gallery(projectImagePath, projectImageNames)
                     var basePath = projectImagePath + baseFile.join("-");
                     var thumbnailPath = basePath + "-small." + fileInfo[1];
                     var largePath = basePath + "-large." + fileInfo[1];
-                    var originalPath = basePath + "-original." + fileInfo[1];
-                img(src=thumbnailPath, data-large-path=largePath,
-                    data-original-path=originalPath)
+                img(src=thumbnailPath, data-large-path=largePath)
 
 mixin titledSection(title)
     .row.project-description-section
