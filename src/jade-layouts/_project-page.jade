@@ -29,6 +29,14 @@ block content
             .image-gallery-selected
             .image-gallery-thumbnails
                 each imageName in projectImageNames
-                    img(src= projectImagePath + imageName)
-
+                    - 
+                        var fileInfo = imageName.split(".");
+                        var baseFile = fileInfo[0].split("-");
+                        baseFile.pop();
+                        var basePath = projectImagePath + baseFile.join("-");
+                        var thumbnailPath = basePath + "-small." + fileInfo[1];
+                        var largePath = basePath + "-large." + fileInfo[1];
+                        var originalPath = basePath + "-original." + fileInfo[1];
+                    img(src=thumbnailPath, data-large-path=largePath,
+                        data-original-path=originalPath)
         block projectDescription
