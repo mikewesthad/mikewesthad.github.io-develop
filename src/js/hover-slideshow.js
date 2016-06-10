@@ -121,7 +121,7 @@ Slideshow.prototype._advanceSlideshow = function () {
     });
     this._$images[this._imageIndex].animate({
         opacity: 1
-    }, this._transitionDuration);
+    }, this._transitionDuration, "easeInOutQuad");
 
     // Schedule next transition
     this._timeoutId = setTimeout(this._advanceSlideshow.bind(this), 
