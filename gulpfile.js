@@ -330,6 +330,14 @@ gulp.task("deploy:git", function () {
 });
 
 
+// -- CLEANING TASKS ----------------------------------------------------------
+// These gulp tasks handle deleting unnecessary files
+
+gulp.task("clean:dest", function () {
+    return del(dest)
+});
+
+
 // -- DEFAULT TASK -------------------------------------------------------------
 // This gulp task runs automatically when you don't specify task.
 
