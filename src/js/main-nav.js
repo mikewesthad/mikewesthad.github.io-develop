@@ -8,6 +8,7 @@ function MainNav(loader) {
 }
 
 MainNav.prototype.setActiveFromUrl = function () {
+    this._deactivate();
     var url = location.pathname;
     if (url === "/index.html" || url === "/") {
         this._activateLink(this._$navLinks.filter("#about-link"));
@@ -17,8 +18,14 @@ MainNav.prototype.setActiveFromUrl = function () {
     }
 };
 
+MainNav.prototype._deactivate = function () {
+    if (this._$activeNav.length) {
+        this._$activeNav.removeClass("active");
+        this._$activeNav = $();
+    };
+};
+
 MainNav.prototype._activateLink = function ($link) {
-    if (this._$activeNav.length) this._$activeNav.removeClass("active");
     $link.addClass("active");
     this._$activeNav = $link;
 };
@@ -29,6 +36,7 @@ MainNav.prototype._onNavClick = function (e) {
     var $target = $(e.currentTarget);
     if ($target.is(this._$activeNav)) return;
 
+    this._deactivate();
     this._activateLink($target);
 
     var url = $target.attr("href");
