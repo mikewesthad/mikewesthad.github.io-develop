@@ -56,6 +56,10 @@ var paths = {
         src: [src + "/fonts/**/*.*", "node_modules/font-awesome/fonts/*.*"],
         dest: dest + "/fonts"
     },
+    misc: {
+        src: [src + "/README.md", src + "/CNAME", src + "/favicon.ico"],
+        dest: dest
+    },
     deploy: {
         src: [dest + "/**/*.*"]
     }
@@ -245,6 +249,13 @@ gulp.task("fonts", function () {
         .pipe(gulp.dest(paths.fonts.dest));
 });
 
+// Take any (new) misc files from src/ over to build/
+gulp.task("misc", function () {
+    return gulp.src(paths.misc.src)
+        .pipe(newer(paths.misc.dest))
+        .pipe(gulp.dest(paths.misc.dest));
+});
+
 // The build task will run all the individual build-related tasks above.
 gulp.task("build", [
     "copy-html",
@@ -252,6 +263,7 @@ gulp.task("build", [
     "sass",
     "images",
     "fonts",
+    "misc",
     "js-lint",
     "js-browserify",
     "js-libs"
