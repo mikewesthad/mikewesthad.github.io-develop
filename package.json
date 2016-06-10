@@ -44,6 +44,7 @@
     "jshint": "^2.9.2",
     "jshint-stylish": "^2.2.0",
     "run-sequence": "^1.2.1",
+    "velocity-animate": "^1.2.3",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }

@@ -38,7 +38,8 @@ var paths = {
     },
     jsLibs: {
         src: [src + "/js/libs/**/*.js", 
-            "node_modules/bootstrap-sass/assets/javascripts/bootstrap.js"],
+            "node_modules/bootstrap-sass/assets/javascripts/bootstrap.js",            
+            "node_modules/velocity-animate/velocity.js"],
         outputFile: "libs.js",
         dest: dest + "/js"
     },
