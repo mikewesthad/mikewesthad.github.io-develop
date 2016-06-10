@@ -314,9 +314,12 @@ gulp.task("run", [
 // server(s).
 
 gulp.task("push:gh-pages", function () {
-    return gulp.src(paths.deploy.src)
+    return gulp.src(paths.deploy.src, { base: dest })
         .pipe(ghPages({
-            remoteUrl: "https://github.com/mikewesthad/mikwesthad.github.io.git"
+            remoteUrl: 
+                "https://github.com/mikewesthad/mikwesthad.github.io.git",
+            branch: "master",
+            message: "Rebuild from mikewesthad.github.io-develop [timestamp]"
         }));
 });
 
