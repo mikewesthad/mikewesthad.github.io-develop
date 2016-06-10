@@ -78,7 +78,7 @@ var liveReload = require("gulp-livereload");
 var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
 var newer = require("gulp-newer");
-var ghPages = require("gulp-gh-pages");
+var deployGit = require("gulp-deploy-git");
 var open = require("gulp-open");
 var gutil = require("gulp-util");
 var jshint = require("gulp-jshint"); // Requires npm jshint
@@ -314,26 +314,19 @@ gulp.task("run", [
 // These gulp tasks handle everything related to deploying the site to live
 // server(s).
 
-gulp.task("push:gh-pages", function () {
-    return gulp.src(paths.deploy.src, { base: dest })
-        .pipe(ghPages({
-            remoteUrl: 
+gulp.task("push:git", function () {
+    return gulp.src(paths.deploy.src, { read: false })
+        .pipe(deployGit({
+            prefix: dest,
+            repository: 
                 "https://github.com/mikewesthad/mikewesthad.github.io.git",
-            branch: "master",
             message: "Rebuild from mikewesthad.github.io-develop"
         }));
 });
 
 // Build, deploy build/ folder to gh-pages and then clean up
-gulp.task("deploy:gh-pages", function () {
-    return runSequence("build", "push:gh-pages", "clean:publish");
-});
-
-// -- CLEANING TASKS ----------------------------------------------------------
-// These gulp tasks handle deleting files.
-
-gulp.task("clean:publish", function () {
-    return del(["./.publish"]);
+gulp.task("deploy:git", function () {
+    return runSequence("build", "push:git");
 });
 
 
