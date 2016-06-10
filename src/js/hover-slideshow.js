@@ -99,7 +99,7 @@ Slideshow.prototype._advanceSlideshow = function () {
             zIndex: 0,
             opacity: 0
         });
-        this._$images[i].stop();
+        this._$images[i].velocity("stop");
     }
 
     // Move the image from 1 steps ago down to the middle z-index and make
@@ -110,7 +110,7 @@ Slideshow.prototype._advanceSlideshow = function () {
             zIndex: 1,
             opacity: 1
         });
-        this._$images[i].stop();
+        this._$images[i].velocity("stop");
     }
 
     // Move the current image to the top z-index and fade it in
@@ -119,7 +119,7 @@ Slideshow.prototype._advanceSlideshow = function () {
         zIndex: 2,
         opacity: 0
     });
-    this._$images[this._imageIndex].animate({
+    this._$images[this._imageIndex].velocity({
         opacity: 1
     }, this._transitionDuration, "easeInOutQuad");
 

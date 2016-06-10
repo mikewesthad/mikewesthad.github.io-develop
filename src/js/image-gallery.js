@@ -66,7 +66,7 @@ ImageGallery.prototype._switchActiveImage = function (index) {
             "zIndex": 0,
             "opacity": 0
         });
-        $galleryImage.stop(); // Stop any animations
+        $galleryImage.velocity("stop"); // Stop any animations
     }, this)
 
     // Cache references to the last and current image & thumbnails
@@ -85,7 +85,7 @@ ImageGallery.prototype._switchActiveImage = function (index) {
     $lastImage.css("zIndex", 1);
     $currentImage.css("zIndex", 2);
     $lastImage.css("opacity", 1);
-    $currentImage.animate({"opacity": 1}, this._transitionDuration, 
+    $currentImage.velocity({"opacity": 1}, this._transitionDuration, 
         "easeInOutQuad");
 
     // Object image fit polyfill breaks jQuery attr(...), so fallback to just 
