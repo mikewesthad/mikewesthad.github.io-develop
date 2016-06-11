@@ -30,14 +30,14 @@ module.exports = function pickRandomSketch() {
         // sketch excluding the most recently seen sketch
         if (numSketches > 1) {
             seenSketchNames = [seenSketchNames.pop()];
-            var unseenSketchNames = findUnseenSketches(seenSketchNames);
+            unseenSketchNames = findUnseenSketches(seenSketchNames);
         } 
         // If we've only got one sketch, then we can't do much...
         else {
             seenSketchNames = [];
             unseenSketchNames = Object.keys(sketchConstructors);            
         }
-    };
+    }
 
     var randSketchName = utils.randArrayElement(unseenSketchNames);
     seenSketchNames.push(randSketchName);
