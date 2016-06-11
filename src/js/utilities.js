@@ -20,6 +20,13 @@ exports.timeIt = function (func) {
     return end - start;
 };
 
+exports.isInRect = function (x, y, rect) {
+    if (x >= rect.x && x <= (rect.x + rect.w) &&
+        y >= rect.y && y <= (rect.y + rect.h)) {
+        return true;
+    }
+    return false;
+};
 
 exports.getQueryParameters = function () {
     // Check for query string
