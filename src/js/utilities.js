@@ -12,6 +12,14 @@ exports.default = function (val, defaultVal) {
 //     }
 //     return obj;
 // };
+// 
+exports.timeIt = function (func) {
+    var start = performance.now();
+    func();
+    var end = performance.now();
+    return end - start;
+};
+
 
 exports.getQueryParameters = function () {
     // Check for query string
