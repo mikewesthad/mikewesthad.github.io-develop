@@ -28,6 +28,25 @@ exports.isInRect = function (x, y, rect) {
     return false;
 };
 
+exports.map = function (num, min1, max1, min2, max2, options) {
+    var mapped = (num - min1) / (max1 - min1) * (max2 - min2) + min2;
+    if (!options) return mapped;
+    if (options.round && options.round === true) {
+        mapped = Math.round(mapped);
+    }
+    if (options.floor && options.floor === true) {
+        mapped = Math.floor(mapped);        
+    }
+    if (options.ceil && options.ceil === true) {
+        mapped = Math.ceil(mapped);        
+    }
+    if (options.clamp && options.clamp === true) {
+        mapped = Math.min(mapped, max2);
+        mapped = Math.max(mapped, min2);
+    }
+    return mapped;
+};
+
 exports.getQueryParameters = function () {
     // Check for query string
     qs = window.location.search;
