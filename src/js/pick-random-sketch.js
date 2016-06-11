@@ -20,7 +20,6 @@ var cookieKey = "seen-sketch-names";
  */
 module.exports = function pickRandomSketch() {
     var seenSketchNames = cookies.getJSON(cookieKey) || [];
-    console.log(seenSketchNames)
 
     // Find the names of the unseen sketches
     var unseenSketchNames = findUnseenSketches(seenSketchNames);
@@ -46,10 +45,6 @@ module.exports = function pickRandomSketch() {
     // Store the generated sketch in a cookie. This creates a moving 7 day
     // window - anytime the site is visited, the cookie is refreshed.
     cookies.set(cookieKey, seenSketchNames, { expires: 7 });
-
-    console.log(randSketchName)
-    console.log(seenSketchNames)
-    console.log()
 
     return sketchConstructors[randSketchName];
 };
