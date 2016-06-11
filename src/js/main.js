@@ -3,12 +3,18 @@ var MainNav = require("./main-nav.js");
 var HoverSlideshows = require("./hover-slideshow.js");
 var PortfolioFilter = require("./portfolio-filter.js");
 var ImageGalleries = require("./image-gallery.js");
+var Sketch = require("./interactive-logos/noisy-word.js");
 
 // AJAX page loader, with callback for reloading widgets
 var loader = new Loader(onPageLoad);
 
 // Main nav widget
 var mainNav = new MainNav(loader);
+
+// Interactive logo in navbar
+var nav = $("nav.navbar");
+var navLogo = nav.find(".navbar-brand");
+var sketch = new Sketch(nav, navLogo);
 
 // Widget globals
 var hoverSlideshows, portfolioFilter, imageGalleries;
