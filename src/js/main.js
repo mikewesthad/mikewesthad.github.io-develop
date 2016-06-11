@@ -3,13 +3,9 @@ var MainNav = require("./main-nav.js");
 var HoverSlideshows = require("./hover-slideshow.js");
 var PortfolioFilter = require("./portfolio-filter.js");
 var ImageGalleries = require("./image-gallery.js");
-var utils = require("./utilities.js");
 
-var sketchConstructors = [
-    require("./interactive-logos/halftone-flashlight-word.js"),
-    require("./interactive-logos/noisy-word-sketch.js")
-]
-var Sketch = utils.randArrayElement(sketchConstructors);
+// Picking a random sketch that the user hasn't seen before
+var Sketch = require("./pick-random-sketch.js")();
 
 // AJAX page loader, with callback for reloading widgets
 var loader = new Loader(onPageLoad);
