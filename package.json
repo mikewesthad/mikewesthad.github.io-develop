@@ -43,6 +43,7 @@
     "gulp-util": "^3.0.7",
     "jshint": "^2.9.2",
     "jshint-stylish": "^2.2.0",
+    "p5-bbox-aligned-text": "^1.2.1",
     "run-sequence": "^1.2.1",
     "velocity-animate": "^1.2.3",
     "vinyl-buffer": "^1.0.0",
