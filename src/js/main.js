@@ -3,7 +3,13 @@ var MainNav = require("./main-nav.js");
 var HoverSlideshows = require("./hover-slideshow.js");
 var PortfolioFilter = require("./portfolio-filter.js");
 var ImageGalleries = require("./image-gallery.js");
-var Sketch = require("./interactive-logos/noisy-word-sketch.js");
+var utils = require("./utilities.js");
+
+var sketchConstructors = [
+    require("./interactive-logos/halftone-flashlight-word.js"),
+    require("./interactive-logos/noisy-word-sketch.js")
+]
+var Sketch = utils.randArrayElement(sketchConstructors);
 
 // AJAX page loader, with callback for reloading widgets
 var loader = new Loader(onPageLoad);
