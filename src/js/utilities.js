@@ -1,4 +1,19 @@
-module.exports.getQueryParameters = function () {
+exports.default = function (val, defaultVal) {
+    return (val !== undefined) ? val : defaultVal;
+};
+
+// Untested
+// exports.defaultProperties = function defaultProperties (obj, props) {
+//     for (var prop in props) {
+//         if (props.hasOwnProperty(props, prop)) {
+//             var value = exports.defaultValue(props.value, props.default);
+//             obj[prop] = value;
+//         }
+//     }
+//     return obj;
+// };
+
+exports.getQueryParameters = function () {
     // Check for query string
     qs = window.location.search;
     if (qs.length <= 1) return {};
@@ -17,7 +32,7 @@ module.exports.getQueryParameters = function () {
     return queryObject;
 };
 
-module.exports.createQueryString = function (queryObject) {
+exports.createQueryString = function (queryObject) {
     if (typeof queryObject !== "object") return "";
     var keys = Object.keys(queryObject);
     if (keys.length === 0) return "";
@@ -31,7 +46,7 @@ module.exports.createQueryString = function (queryObject) {
     return queryString;
 };
 
-module.exports.wrapIndex = function (index, length) {
+exports.wrapIndex = function (index, length) {
     var wrappedIndex = (index % length); 
     if (wrappedIndex < 0) {
         // If negative, flip the index so that -1 becomes the last item in list 
