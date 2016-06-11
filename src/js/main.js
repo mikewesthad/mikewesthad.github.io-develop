@@ -3,7 +3,7 @@ var MainNav = require("./main-nav.js");
 var HoverSlideshows = require("./hover-slideshow.js");
 var PortfolioFilter = require("./portfolio-filter.js");
 var ImageGalleries = require("./image-gallery.js");
-var Sketch = require("./interactive-logos/noisy-word.js");
+var Sketch = require("./interactive-logos/noisy-word-sketch.js");
 
 // AJAX page loader, with callback for reloading widgets
 var loader = new Loader(onPageLoad);
