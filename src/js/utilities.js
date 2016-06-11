@@ -28,6 +28,15 @@ exports.isInRect = function (x, y, rect) {
     return false;
 };
 
+exports.randInt = function (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+exports.randArrayElement = function (array) {
+    var i = exports.randInt(0, array.length - 1);    
+    return array[i];
+};
+
 exports.map = function (num, min1, max1, min2, max2, options) {
     var mapped = (num - min1) / (max1 - min1) * (max2 - min2) + min2;
     if (!options) return mapped;
