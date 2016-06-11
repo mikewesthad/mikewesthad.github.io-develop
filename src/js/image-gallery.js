@@ -67,7 +67,7 @@ ImageGallery.prototype._switchActiveImage = function (index) {
             "opacity": 0
         });
         $galleryImage.velocity("stop"); // Stop any animations
-    }, this)
+    }, this);
 
     // Cache references to the last and current image & thumbnails
     var $lastThumbnail = this._$thumbnails[this._index];

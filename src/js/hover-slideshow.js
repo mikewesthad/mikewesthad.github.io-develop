@@ -90,11 +90,12 @@ Slideshow.prototype._onLeave = function () {
 
 Slideshow.prototype._advanceSlideshow = function () {
     this._imageIndex += 1;
+    var i;
 
     // Move the image from 2 steps ago down to the bottom z-index and make
     // it invisible
     if (this._numImages >= 3) {
-        var i = utilities.wrapIndex(this._imageIndex - 2, this._numImages);
+        i = utilities.wrapIndex(this._imageIndex - 2, this._numImages);
         this._$images[i].css({
             zIndex: 0,
             opacity: 0
@@ -105,7 +106,7 @@ Slideshow.prototype._advanceSlideshow = function () {
     // Move the image from 1 steps ago down to the middle z-index and make
     // it completely visible
     if (this._numImages >= 2) {
-        var i = utilities.wrapIndex(this._imageIndex - 1, this._numImages);
+        i = utilities.wrapIndex(this._imageIndex - 1, this._numImages);
         this._$images[i].css({
             zIndex: 1,
             opacity: 1

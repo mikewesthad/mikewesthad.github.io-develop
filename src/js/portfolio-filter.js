@@ -94,7 +94,7 @@ PortfolioFilter.prototype._filterProjects = function (category) {
             }, this._transitionDuration, "easeInOutCubic");
         }
     }.bind(this));
-}
+};
 
 PortfolioFilter.prototype._animateGridHeight = function (numElements) {
     this._$grid.velocity("stop");
@@ -175,7 +175,7 @@ PortfolioFilter.prototype._createGrid = function () {
             height: this._imageHeight + "px"
         });
     }.bind(this));    
-}
+};
 
 PortfolioFilter.prototype._onNavClick = function (e) {
     e.preventDefault();
@@ -192,7 +192,7 @@ PortfolioFilter.prototype._onNavClick = function (e) {
     }, null, "/work.html?category=" + category);
 
     this._filterProjects(category);
-}
+};
 
 PortfolioFilter.prototype._onProjectClick = function (e) {
     e.preventDefault();
@@ -200,7 +200,7 @@ PortfolioFilter.prototype._onProjectClick = function (e) {
     var projectName = $target.data("name");
     var url = "/projects/" + projectName + ".html";
     this._loader.loadPage(url, {}, true);
-}
+};
 
 
 PortfolioFilter.prototype._indexToXY = function (index) {
@@ -210,4 +210,4 @@ PortfolioFilter.prototype._indexToXY = function (index) {
         x: c * this._imageWidth + c * this._gridSpacing,
         y: r * this._imageHeight + r * this._gridSpacing
     };
-}
+};

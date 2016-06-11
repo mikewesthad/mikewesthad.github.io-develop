@@ -23,7 +23,7 @@ MainNav.prototype._deactivate = function () {
     if (this._$activeNav.length) {
         this._$activeNav.removeClass("active");
         this._$activeNav = $();
-    };
+    }
 };
 
 MainNav.prototype._activateLink = function ($link) {
@@ -33,6 +33,7 @@ MainNav.prototype._activateLink = function ($link) {
 
 MainNav.prototype._onNavClick = function (e) {
     e.preventDefault();
+};
 
     // Close the nav. This only matters if we are on mobile
     this._$nav.collapse("hide");
