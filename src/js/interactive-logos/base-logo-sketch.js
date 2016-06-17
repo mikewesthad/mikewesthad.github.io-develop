@@ -10,7 +10,7 @@ function BaseLogoSketch($nav, $navLogo, fontPath) {
     this._text = this._$navLogo.text();
     this._isFirstFrame = true;
     this._isMouseOver = false;
-    this._isPointer = false;
+    this._isOverNavLogo = false;
 
     this._updateTextOffset();
     this._updateSize();
@@ -120,7 +120,7 @@ BaseLogoSketch.prototype._setMouseOver = function (isMouseOver) {
  * This reduces the need for the canvas to do any AJAX-y stuff.
  */
 BaseLogoSketch.prototype._onClick = function (e) {
-    if (this._isPointer) this._$navLogo.trigger(e);
+    if (this._isOverNavLogo) this._$navLogo.trigger(e);
 };
 
 /**
@@ -168,11 +168,11 @@ BaseLogoSketch.prototype._setup = function (p) {
 BaseLogoSketch.prototype._draw = function (p) {
     if (this._isMouseOver) {
         var isOverLogo = utils.isInRect(p.mouseX, p.mouseY, this._logoBbox);
-        if (!this._isPointer && isOverLogo) {
-            this._isPointer = true;
+        if (!this._isOverNavLogo && isOverLogo) {
+            this._isOverNavLogo = true;
             this._$canvas.css("cursor", "pointer");
-        } else if (this._isPointer && !isOverLogo) {
-            this._isPointer = false;
+        } else if (this._isOverNavLogo && !isOverLogo) {
+            this._isOverNavLogo = false;
             this._$canvas.css("cursor", "initial");
         }
     }

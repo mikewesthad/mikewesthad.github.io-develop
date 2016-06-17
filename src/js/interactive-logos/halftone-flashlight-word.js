@@ -98,7 +98,7 @@ Sketch.prototype._calculateCircles = function (p) {
 
 Sketch.prototype._draw = function (p) {
     BaseLogoSketch.prototype._draw.call(this, p);
-    if (!this._isMouseOver) return;
+    if (!this._isMouseOver || !this._isOverNavLogo) return;
 
     // When the text is about to become active for the first time, clear
     // the stationary logo that was previously drawn. 
