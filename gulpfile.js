@@ -218,6 +218,14 @@ gulp.task("resize-images", function () {
     return gulp.src([
             "src/original-images/**/*.{png,PNG,jpg,JPG}"
         ])
+        .pipe(newer({
+            dest: "src/images",
+            map: function (relativePath) {
+                // Check if file is newer than small.jpg version of file in dest
+                return relativePath.split(".").slice(0, -1).join(".") + 
+                    "-small.jpg";
+            }
+        }))
         .pipe(responsive({
             "**/*.*": [
             // {
