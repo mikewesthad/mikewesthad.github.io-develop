@@ -1,0 +1,23 @@
+extend ../jade-layouts/_multi-project-page.jade
+
+block variables
+    - 
+        var projectName = "emojify-tracking";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "Emojify";
+        var projectHeadline = " is an experiment in JS face tracking.";
+        var projectDetails = [
+            "2016",
+            "clmtrackr",
+            "<a href='//github.com/mikewesthad/emojify'>Source Code</a>",
+            "Tags: Sketches"
+        ];
+
+block projectDescription
+
+    +fullWidthSection()
+        +demoLink("/emojify/")
+            img(src=projectImagePath+"emojify-demo.gif" style="width: 100%")
+    
+    +titledSection("Overview") 
+        p Experiment in facetracking with JS. #[a(href="/emojify/") Live version].

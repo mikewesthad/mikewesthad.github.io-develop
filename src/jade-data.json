@@ -40,6 +40,16 @@
             "categories": ["teaching"]
         },
         {  
+            "name": "emojify-tracking",
+            "caption": "Emojify",
+            "images": [
+                "emojify-demo-1-small.jpg",
+                "emojify-demo-2-small.jpg",
+                "emojify-demo-3-small.jpg"  
+            ],
+            "categories": ["sketches"]
+        },
+        {  
             "name": "public-insecurities",
             "caption": "Public Insecurities",
             "images": [

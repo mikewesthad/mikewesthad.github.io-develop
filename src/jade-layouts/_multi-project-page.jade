@@ -1,10 +1,11 @@
 extend ./_basic-page.jade
 
 mixin demoLink(href)
-    a.demo-link(href=href)
-        .overlay
-            .fa.fa-external-link(aria-hidden="true")
-        block
+    div.demo-link
+        a(href=href)
+            .overlay
+                .fa.fa-external-link(aria-hidden="true")
+            block
 
 mixin gallery(projectImagePath, projectImageNames)
     .row.project-description-section.image-gallery
@@ -28,7 +29,7 @@ mixin titledSection(title)
 
 mixin fullWidthSection()
     .row.project-description-section
-        .col-xs-12 
+        .col-xs-12
             block
 
 block content
