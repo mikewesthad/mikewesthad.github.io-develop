@@ -1,5 +1,11 @@
 extend ./_basic-page.jade
 
+mixin demoLink(href)
+    a.demo-link(href=href)
+        .overlay
+            .fa.fa-external-link(aria-hidden="true")
+        block
+
 mixin gallery(projectImagePath, projectImageNames)
     .row.project-description-section.image-gallery
         .image-gallery-selected

@@ -21,6 +21,15 @@
             "categories": ["art"]
         },
         {  
+            "name": "youtube-spaces",
+            "caption": "YouTube Spaces",
+            "images": [
+                "infinite-load-small.jpg",
+                "screenshot-small.jpg"  
+            ],
+            "categories": ["sketches"]
+        },
+        {  
             "name": "ofbook",
             "caption": "ofBook",
             "images": [

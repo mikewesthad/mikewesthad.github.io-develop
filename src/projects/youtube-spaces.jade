@@ -1,0 +1,26 @@
+extend ../jade-layouts/_multi-project-page.jade
+
+block variables
+    - 
+        var projectName = "youtube-spaces";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "YouTube Spaces";
+        var projectHeadline = " is an experiment in 3D YouTube.";
+        var projectDetails = [
+            "2016",
+            "three.js",
+            "<a href='//github.com/mikewesthad/youtube-cerebro'>Source Code</a>",
+            "Tags: Sketches"
+        ];
+
+block projectDescription
+
+    +fullWidthSection()
+        +demoLink("/youtube-cerebro/")
+            img(src=projectImagePath+"screenshot-large.jpg" style="width: 100%")
+    
+    +titledSection("Overview") 
+        p Experiment in 3D YouTube via three.js, 3D CSS transforms and YouTube player API. #[a(href="/youtube-cerebro/") Live version].
+    
+    +fullWidthSection()
+        img(src=projectImagePath+"infinite-load-large.gif" style="width: 100%")
