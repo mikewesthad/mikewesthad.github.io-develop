@@ -216,7 +216,7 @@ gulp.task("images", function () {
 
 gulp.task("resize-images", function () {
     return gulp.src([
-            "src/original-images/**/*.{png,PNG,gif,GIF,jpg,JPG}"
+            "src/original-images/**/*.{png,PNG,jpg,JPG}"
         ])
         .pipe(responsive({
             "**/*.*": [
@@ -243,6 +243,13 @@ gulp.task("resize-images", function () {
             errorOnEnlargement: false
         })).on("error", gutil.log)
         .pipe(gulp.dest("src/images"))
+});
+
+gulp.task("copy-gifs", function () {
+    return gulp.src([
+            "src/original-images/**/*.{gif,GIF}"
+        ])
+        .pipe(gulp.dest("src/images"));
 });
 
 // Take any (new) fonts from src/fonts over to build/fonts.
