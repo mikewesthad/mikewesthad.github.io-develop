@@ -10,21 +10,22 @@ Sketch.prototype = Object.create(BaseLogoSketch.prototype);
 
 function Sketch($nav, $navLogo) {
     BaseLogoSketch.call(this, $nav, $navLogo, "../fonts/big_john-webfont.ttf");
-
-    this._spacing = utils.map(this._fontSize, 20, 40, 2, 5, {clamp: true, 
-        round: true});
 }
 
 Sketch.prototype._onResize = function (p) {
     BaseLogoSketch.prototype._onResize.call(this, p);
     this._spacing = utils.map(this._fontSize, 20, 40, 2, 5, {clamp: true, 
         round: true});
-    this._bboxText.setText(this._text);
-    this._bboxText.setTextSize(this._fontSize);
-    this._textOffset.top -= this._bboxText._distBaseToMid;
-    this._textOffset.left += this._bboxText.halfWidth;  
+    // Update the bboxText, place over the nav text logo and then shift its 
+    // anchor back to (center, center) while preserving the text position
+    this._bboxText.setText(this._text)
+        .setTextSize(this._fontSize)
+        .setAnchor(BboxText.ALIGN.BOX_LEFT, BboxText.BASELINE.ALPHABETIC)
+        .setPosition(this._textOffset.left, this._textOffset.top)
+        .setAnchor(BboxText.ALIGN.BOX_CENTER, BboxText.BASELINE.BOX_CENTER, 
+            true);
     this._drawStationaryLogo(p);
-    this._calculatePoints();
+    this._points = this._bboxText.getTextPoints();
     this._isFirstFrame = true;
 };
 
@@ -33,8 +34,7 @@ Sketch.prototype._drawStationaryLogo = function (p) {
     p.stroke(255);
     p.fill("#0A000A");
     p.strokeWeight(2);
-    this._bboxText.setRotation(0);
-    this._bboxText.draw(this._textOffset.left, this._textOffset.top);
+    this._bboxText.draw();
 };
 
 Sketch.prototype._setup = function (p) {
@@ -42,9 +42,8 @@ Sketch.prototype._setup = function (p) {
 
     // Create a BboxAlignedText instance that will be used for drawing and 
     // rotating text
-    this._bboxText = new BboxText(this._font, this._text, this._fontSize, p);
-    this._bboxText.setAnchor(BboxText.ALIGN.BOX_CENTER,
-        BboxText.BASELINE.BOX_CENTER);
+    this._bboxText = new BboxText(this._font, this._text, this._fontSize, 0, 0,
+        p);
 
     // Handle the initial setup by triggering a resize
     this._onResize(p);
@@ -54,11 +53,6 @@ Sketch.prototype._setup = function (p) {
 
     // Start the sin generator at its max value
     this._thresholdGenerator = new SinGenerator(p, 0, 1, 0.02, p.PI/2); 
-};
-
-Sketch.prototype._calculatePoints = function () {
-    this._points = this._bboxText.getTextPoints(this._textOffset.left, 
-        this._textOffset.top);
 };
 
 Sketch.prototype._draw = function (p) {
@@ -93,7 +87,8 @@ Sketch.prototype._draw = function (p) {
 
                 p.noStroke();
                 p.fill("rgba(165, 0, 173, 0.25)");
-                p.ellipse((point1.x+point2.x)/2, (point1.y+point2.y)/2, dist, dist);  
+                p.ellipse((point1.x + point2.x) / 2, (point1.y + point2.y) / 2,
+                    dist, dist);  
 
                 p.stroke("rgba(165, 0, 173, 0.25)");
                 p.noFill();
