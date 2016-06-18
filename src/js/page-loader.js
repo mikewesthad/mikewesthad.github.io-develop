@@ -36,6 +36,10 @@ Loader.prototype.loadPage = function (url, queryObject, shouldPushHistory) {
             }, null, url + queryString);
         }
 
+        // Update Google analytics
+        ga("set", "page", url + queryString);
+        ga("send", "pageview");
+
         this._path = location.pathname;
         this._$content.velocity({ opacity: 1 }, this._fadeDuration, 
             "swing");
