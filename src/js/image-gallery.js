@@ -15,6 +15,7 @@ function ImageGalleries(transitionDuration) {
 function ImageGallery($container, transitionDuration) {
     this._transitionDuration = transitionDuration;
     this._$container = $container;
+    this._$captionContainer = $container.find(".image-gallery-caption");
     this._$thumbnailContainer = $container.find(".image-gallery-thumbnails");
     this._index = 0; // Index of selected image
 
@@ -87,6 +88,18 @@ ImageGallery.prototype._switchActiveImage = function (index) {
     $lastImage.css("opacity", 1);
     $currentImage.velocity({"opacity": 1}, this._transitionDuration, 
         "easeInOutQuad");
+
+    // Create the caption, if it exists on the thumbnail
+    var caption = $currentThumbnail.data("caption");
+    if (caption) {
+        this._$captionContainer.empty();
+        $("<span>").addClass("figure-number")
+            .text("Fig. " + (this._index + 1) + ": ")
+            .appendTo(this._$captionContainer);
+        $("<span>").addClass("caption")
+            .text(caption)
+            .appendTo(this._$captionContainer);
+    }
 
     // Object image fit polyfill breaks jQuery attr(...), so fallback to just 
     // using element.src
