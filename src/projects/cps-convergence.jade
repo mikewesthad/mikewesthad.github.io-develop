@@ -19,6 +19,13 @@ block variables
             "anderson-in-progress-large.jpg",
             "anderson-iteration-large.jpg"
         ];
+        var andersonCaptions = [
+            "One group's final creature designs.",
+            "Students arguing why their animal would be best suited to survive a tornado.",
+            "A set of situation cards - each round of the game involves picking a random one.",
+            "A student working in Photoshop to prototype her creature design.",
+            "The evolution of one student's creature designs over three iterations."
+        ];
         var pollardImages = [
             "pollard-bot-design-2-large.jpg",
             "pollard-bot-design-1-large.jpg",
@@ -27,13 +34,20 @@ block variables
             "pollard-final-1-large.jpg",
             "pollard-final-2-large.jpg"
         ];
+        var pollardCaptions = [
+            "A group working on their \u201Cwheelbarrow\u201D design.",
+            "A group debugging the electronics on their box design.",
+            "A group learning about circuits.",
+            "A group working on their \u201Cpulley\u201D design.",
+            "A group preparing to see how far their design can travel.",
+            "Another group preparing to see how far their design can travel."
+        ];
 
 block projectDescription
 
     +titledSection("Overview") 
         p Through #[a(href="//convergenceacademies.org") Convergence Academies], I collaborated with instructors in Chicago Public Schools (CPS) to build hands-on lessons that used art &amp; technology to deepen learning and meet the CPS core standards. I worked with a series of instructors across science &amp; math classes. Below are two lessons that I co-created in Physics and Biology.
 
-    +gallery(projectImagePath, pollardImages)
 
     +titledSection("Physics: Robot Challenge") 
         p Ryan Pollard and I created a series of lessons to teach core electricity concepts (voltage, current, etc.) as well as give students practical experience in building circuits. 
@@ -42,7 +56,8 @@ block projectDescription
 
         //- p Ryan designed and gave lectures on electricity, while I was mainly responsible for designing interactive circuit demos and mentoring students as they worked on their robots.
 
-    +gallery(projectImagePath, andersonImages)
+    +gallery(projectImagePath, pollardImages, pollardCaptions)
+
 
     +titledSection("Biology: Evolution Card Game") 
         p Cody Anderson and I created a series of lessons to teach the core concepts of evolution. After learning about survival of the fittest, students designed their own frankenstein animals &mdash; by combining parts from existing animals &mdash; that could survive various environments.
@@ -50,3 +65,5 @@ block projectDescription
         p Drawing inspritation from popular argument-based card games (e.g. Apples to Apples, Cards Against Humanity), we designed an evolution card game. Students designed their own "super" animals. In each round of the game, a situation card (e.g. flood, extreme heat, etc.) would be randomly picked. Students would then argue why their animal was best suited to the particular situation, using arguments based on the specific adaptations of their animal. After each student made their case, a judge would decide who had the most convincing argument.    
 
         //- p I was mainly responsible for supervising the games, mentoring students as they designed their animals, designing the card templates and giving lessons in Photoshop. Cody and I collaborated on the rules of the game.
+
+    +gallery(projectImagePath, andersonImages, andersonCaptions)
