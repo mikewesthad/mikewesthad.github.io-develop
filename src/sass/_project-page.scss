@@ -70,6 +70,26 @@ $section-spacing: 50px;
         }
     }
 
+    .demo-grid {
+        .demo-caption {
+            text-align: center;
+            font-style: italic;
+            font-size: 18px;
+            color: #616161;
+            font-weight: 300;
+            margin-bottom: 30px;
+
+            &:before {
+                display: block;
+                margin: 10px auto 5px auto;
+                content: "";
+                width: 20%;
+                height: 1px;
+                background-color: #BCBCBC;
+            }
+        }
+    }
+
     .project-description-section {
         margin-bottom: $section-spacing;
         font-size: 20px;
@@ -94,6 +114,12 @@ $section-spacing: 50px;
         #project-headline {
             font-size: 22px;
             margin-bottom: 40px;
+        }
+
+        .demo-grid {
+            .demo-caption {
+                font-size: 15px;
+            }
         }
 
         .project-description-section {
@@ -126,6 +152,12 @@ $section-spacing: 50px;
             .details {
                 font-size: 13px;
                 margin-top: 10px;
+            }
+        }
+
+        .demo-grid {
+            .demo-caption {
+                font-size: 15px;
             }
         }
 
