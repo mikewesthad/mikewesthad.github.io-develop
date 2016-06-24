@@ -23,10 +23,21 @@ block variables
             "book-open-1-large.jpg",
             "book-open-2-large.jpg"
         ];
+        var projectImageCaptions = [
+            "Close up of the chronology of the article \u2014 the further back a word is, the older it is.",
+            "Installation view at SAIC.",
+            "Close up of the chronology of the article.",
+            "Installation view at SAIC.",
+            "Books that record the debates between wiki authors \u0026 editors.",
+            "The covers of the books are selected samples of the article text.",
+            "Close-up of \u201CWording Choice\u201D book.",          
+            "Preface page of \u201CSome People Dispute\u201D book.", 
+            "Example edit from \u201CSome People Dispute\u201D book."            
+        ];
 
 block projectDescription
 
-    +gallery(projectImagePath, projectImageNames)
+    +gallery(projectImagePath, projectImageNames, projectImageCaptions)
     
     +titledSection("Overview") 
         p [View History] reveals the evolution of a controversial Wikipedia article &mdash; &ldquo;#[a(href="https://en.wikipedia.org/wiki/Global_warming") Global Warming]&rdquo; &mdash; in two ways: through the chronology of edits and through discussions between editors.
