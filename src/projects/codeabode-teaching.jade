@@ -1,0 +1,94 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    - 
+        var projectName = "codeabode-teaching";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "";
+        var projectHeadline = "I was curriculum director &amp; lead instructor at a non-profit code school.";
+        var projectDetails = [
+            "2015 - 2016",
+            "Chicago",
+            "CodeAbode",
+            "Tags: Teaching"
+        ];
+        var slideImages = [
+            "slide-variable-large.jpg",
+            "slide-conditional-large.jpg",
+            "slide-loop-large.jpg",
+            "slide-git-large.jpg",
+            "slide-server-large.jpg",
+            "slide-pirate-1-large.jpg",
+            "slide-pirate-2-large.jpg"
+        ];
+        var slideCaptions = [
+            "Intro to JS Slide - Variables",
+            "Intro to JS Slide - Conditionals",
+            "Intro to JS Slide - Loops",
+            "Advanced JS Slide - GitHub Pages",
+            "Server-Side JS Slide - Requests and Responses",
+            "Server-Side JS Slide - Serving Static Files",
+            "Server-Side JS Slide - API"
+        ];
+        var demoImages = [
+            "events-hipster-faces-large.jpg",
+            "p5js-mouse-drawing-large.jpg",
+            "p5js-music-visualization-large.jpg",
+            "api-weather-flickr-large.jpg",
+            "oop-matrix-large.jpg",
+            "local-storage-movie-pal-large.jpg",
+            "socket-drawing-large.jpg",
+            "node-pirate-large.jpg"
+        ];
+        var demoCaptions = [
+            "Intro to JS Lab - Mix-n-Match Hipster Event Handling",
+            "Intro to JS Lab - Glowing Canvas Drawing",
+            "Intro to JS Lab - Canvas Music Visualizer",
+            "Advanced JS Lab - Visual Weather App",
+            "Advanced JS Lab - Object-Oriented Text Particles",
+            "Advanced JS Lab - Movie Tracker App Using Local Storage",
+            "Server-Side JS Lab - Real-Time, Multi-User Drawing App",
+            "Server-Side JS Lab - Pirate Translation API and App"
+        ];
+
+block projectDescription
+
+    +titledSection("Overview") 
+        p CodeAbode was a non-profit code school that was dedicated to making learning web development accessible and affordable for everyone. 
+
+        p I designed the web development curriculum, taught 480 course hours across intensive day bootcamps &amp; night classes, and recieved an average instructor evaluation of 4.88 / 5 across my courses.
+    
+    +gallery(projectImagePath, slideImages, slideCaptions)
+
+    
+    +titledSection("Curriculum") 
+        p I designed the web development curriculum to teach beginners &mdash; with no programming background &mdash;  the skills needed for both front-end and back-end development. The seqeunce of courses was:
+
+            ul
+                li Modern Web Design with HTML/CSS
+                li Introduction to Web Programming (JavaScript)
+                li Advanced JavaScript
+                li Server-Side Programming (Node.js)
+                li Capstone Projects
+
+        p Note: I designed all the classes except for HTML/CSS. A breakdown of the individual courses is hosted online #[a(href="//codeabodechicago.github.io/CodeAbode-Website/curriculum.html") here].
+
+    +titledSection("Teaching Philosophy")
+        p My classes were focused on teaching students how to problem solve and how to teach themselves, through hands-on demonstrations and assignments that guided students through the fundamental concepts. The goal was not to memorize a specific syntax, but rather to learn how to think and problem solve with code.
+
+        p Example assignments and exercises below.
+    
+    .row.demo-grid
+        each imageName, index in demoImages
+            .col-sm-6
+                - 
+                    var imageBase = imageName.split(".")[0].split("-");
+                    imageBase.pop();
+                    var link = "//www.mikewesthad.com/selected-teaching-demos/" + imageBase.join("-") + ".html";
+                +demoLink(link)
+                    img(src=projectImagePath+imageName style="width: 100%")
+                .demo-caption #{demoCaptions[index]}
+        
+    //- +gallery(projectImagePath, demoImages, demoCaptions)
+
+    
