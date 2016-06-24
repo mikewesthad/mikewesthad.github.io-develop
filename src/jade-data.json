@@ -1,6 +1,16 @@
 {
     "projects": [
         {  
+            "name": "codeabode-teaching",
+            "caption": "Web Curriculum Director",
+            "images": [
+                "slide-variable-small.jpg",
+                "api-weather-flickr-small.jpg",
+                "slide-conditional-small.jpg"
+            ],
+            "categories": ["teaching"]
+        },
+        {  
             "name": "codeabode-website",
             "caption": "CodeAbode Website",
             "images": [
