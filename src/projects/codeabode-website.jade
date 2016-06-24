@@ -10,7 +10,7 @@ block variables
             "2015",
             "Collaboration",
             "Client: CodeAbode",
-            "Tags: Art"
+            "Tags: Development"
         ];
         var projectImageNames = [
             "responsive-showcase-large.jpg",
@@ -19,8 +19,25 @@ block variables
             "hd-full-index-large.jpg",
             "hd-full-about-large.jpg"
         ];
+        var projectImageNames = [
+            "responsive-showcase-large.jpg",
+            "hd-cropped-index-large.jpg",
+            "hd-cropped-curriculum-scrolled-large.jpg",
+            "hd-full-index-large.jpg",
+            "hd-full-about-large.jpg"
+        ];
+        var projectImageCaptions = [
+            "Responsive design",
+            "Landing page",
+            "Curriculum page",
+            "Full landing page",
+            "Full about page"
+        ];
 
 block projectDescription
+
+    +gallery(projectImagePath, projectImageNames, projectImageCaptions)
+
     +titledSection("Overview") 
         p In collaboration with #[a(href="//rextwedt.com") Rex Twedt], I designed and implemented a modern, responsive website for CodeAbode, a Chicago-based, not-for-profit code school.
 

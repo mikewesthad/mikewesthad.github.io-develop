@@ -6,11 +6,23 @@ block variables
         var projectImagePath = "/images/projects/" + projectName + "/";
         var projectTitle = "Disconnect";
         var projectHeadline = " is a game about cutting power, with LEDs as controls.";
-        var projectDetails = ["2013", "Unity, Arduino, C++, openFrameworks", "<a href='//github.com/mikewesthad/AugmentedInterface'>Source Code</a>", "Tags: Sketches"];
-        var projectImageNames = ["led-two-large.jpg", "led-off-large.jpg", 
-            "led-one-large.jpg", "green-end-large.jpg"];
+        var projectDetails = [
+            "2013",
+            "Unity, Arduino, C++, openFrameworks",
+            "<a href='//github.com/mikewesthad/AugmentedInterface'>Source Code</a>",
+            "Tags: Sketches"
+        ];
+        var projectImageNames = [
+            "led-two-large.jpg",
+            "led-off-large.jpg", 
+            "led-one-large.jpg",
+            "green-end-large.jpg"
+        ];
 
 block projectDescription
+
+    +gallery(projectImagePath, projectImageNames)
+
     +titledSection("Overview") 
         p Disconnect is an experiment in augmented interfaces for game spaces. In addition to a keyboard and mouse, players also use two physical LEDs as controls in the game space. The LEDs can be turned on and off from the game, and unplugging the physical LEDs cuts the power in the game.
         p The game is built in #[a(href="//unity3d.com/") Unity], using #[a(href="//www.arduino.cc") Arduino] for managing the hardware, and #[a(href="//openframeworks.cc/") openFrameworks] for communicating between the two.
