@@ -124,6 +124,10 @@ gulp.task("jade", function () {
             });
         }))
         .pipe(pug())
+        .on("error", function (err) {
+            gutil.log(err);
+            this.emit("end"); 
+        })
         .pipe(gulp.dest(paths.jade.dest))
         .pipe(liveReload());
 });
