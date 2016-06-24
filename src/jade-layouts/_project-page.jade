@@ -1,5 +1,29 @@
 extend ./_basic-page.jade
 
+mixin demoLink(href)
+    div.demo-link
+        a(href=href)
+            .overlay
+                .fa.fa-external-link(aria-hidden="true")
+            block
+
+mixin gallery(imagePath, imageNames, imageCaptions)
+    .row.project-description-section.image-gallery
+        .image-gallery-selected
+        if imageCaptions
+            .image-gallery-caption
+        .image-gallery-thumbnails
+            each imageName, index in imageNames
+                -
+                    var caption = (imageCaptions && imageCaptions[index]) || "";
+                    var fileInfo = imageName.split(".");
+                    var baseFile = fileInfo[0].split("-");
+                    baseFile.pop();
+                    var basePath = projectImagePath + baseFile.join("-");
+                    var thumbnailPath = basePath + "-small." + fileInfo[1];
+                    var largePath = basePath + "-large." + fileInfo[1];
+                img(src=thumbnailPath, data-large-path=largePath, data-caption=caption)
+
 mixin titledSection(title)
     .row.project-description-section
         .caption-left.col-md-2!= title
@@ -8,12 +32,12 @@ mixin titledSection(title)
 
 mixin fullWidthSection()
     .row.project-description-section
-        .col-xs-12 
+        .col-xs-12
             block
 
 block content
     block variables
-
+    
     .container.project-page(id= projectTitle)
         #project-headline
             .project-headline
@@ -25,16 +49,4 @@ block content
                     if index !== (projectDetails.length - 1)
                         | |
 
-        .project-description-section.image-gallery
-            .image-gallery-selected
-            .image-gallery-thumbnails
-                each imageName in projectImageNames
-                    - 
-                        var fileInfo = imageName.split(".");
-                        var baseFile = fileInfo[0].split("-");
-                        baseFile.pop();
-                        var basePath = projectImagePath + baseFile.join("-");
-                        var thumbnailPath = basePath + "-small." + fileInfo[1];
-                        var largePath = basePath + "-large." + fileInfo[1];
-                    img(src=thumbnailPath, data-large-path=largePath)
         block projectDescription
