@@ -41,8 +41,7 @@ function ImageGallery($container, transitionDuration) {
                 top: "0px",
                 left: "0px",
                 opacity: 0,
-                zIndex: 0,
-                backgroundColor: "white"
+                zIndex: 0
             })
             .attr("id", id)
             .data("image-url", largePath)

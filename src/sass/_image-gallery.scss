@@ -105,7 +105,11 @@
 }
 
 // Styling for specific images in the gallery
-.image-gallery-selected {    
+.image-gallery-selected { 
+    img {
+        background-color: #fff;
+    }
+
     #anderson-student-cards-large,
     #anderson-situation-cards-large,
     #anderson-iteration-large {
@@ -138,5 +142,21 @@
     #socket-drawing-large,
     #node-pirate-large {
         @include object-fit(contain);
+    }
+
+    #slide-variable-large,
+    #slide-conditional-large,
+    #slide-loop-large,
+    #slide-git-large,
+    #slide-server-large,
+    #slide-pirate-1-large,
+    #slide-pirate-2-large {
+        @include object-fit(contain);
+    }
+
+    #slide-variable-large,
+    #slide-conditional-large,
+    #slide-loop-large {
+        background-color: #272822;
     }
 }
