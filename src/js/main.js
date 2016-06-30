@@ -2,7 +2,7 @@ var Loader = require("./page-loader.js");
 var MainNav = require("./main-nav.js");
 var HoverSlideshows = require("./hover-slideshow.js");
 var PortfolioFilter = require("./portfolio-filter.js");
-var ImageGalleries = require("./image-gallery.js");
+var slideshows = require("./thumbnail-slideshow/slideshow.js");
 
 // Picking a random sketch that the user hasn't seen before
 var Sketch = require("./pick-random-sketch.js")();
@@ -19,7 +19,7 @@ var navLogo = nav.find(".navbar-brand");
 var sketch = new Sketch(nav, navLogo);
 
 // Widget globals
-var hoverSlideshows, portfolioFilter, imageGalleries;
+var hoverSlideshows, portfolioFilter;
 
 // Load all widgets
 onPageLoad();
@@ -46,7 +46,7 @@ function onPageLoad() {
     // Reload all plugins/widgets
     hoverSlideshows = new HoverSlideshows();
     portfolioFilter = new PortfolioFilter(loader);
-    imageGalleries = new ImageGalleries();
+    slideshows.init();
     objectFitImages();
     smartquotes();
 

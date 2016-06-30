@@ -8,21 +8,32 @@ mixin demoLink(href)
             block
 
 mixin gallery(imagePath, imageNames, imageCaptions)
-    .row.project-description-section.image-gallery
-        .image-gallery-selected
-        if imageCaptions
-            .image-gallery-caption
-        .image-gallery-thumbnails
-            each imageName, index in imageNames
-                -
-                    var caption = (imageCaptions && imageCaptions[index]) || "";
-                    var fileInfo = imageName.split(".");
-                    var baseFile = fileInfo[0].split("-");
-                    baseFile.pop();
-                    var basePath = projectImagePath + baseFile.join("-");
-                    var thumbnailPath = basePath + "-small." + fileInfo[1];
-                    var largePath = basePath + "-large." + fileInfo[1];
-                img(src=thumbnailPath, data-large-path=largePath, data-caption=caption)
+    .row.project-description-section.slideshow
+        .selected-image
+        .caption
+        .thumbnail-wrap
+            .visible-thumbnails
+                .thumbnails
+                    each imageName, i in imageNames
+                        -
+                            var caption = (imageCaptions && imageCaptions[i]) || "";
+                            var fileInfo = imageName.split(".");
+                            var baseFile = fileInfo[0].split("-");
+                            baseFile.pop();
+                            var basePath = projectImagePath + baseFile.join("-");
+                            var thumbnailPath = basePath + "-small." + fileInfo[1];
+                            var largePath = basePath + "-large." + fileInfo[1];
+                        img(src=thumbnailPath, data-large-path=largePath, data-caption=caption)
+            i.fa.fa-chevron-left.thumbnail-advance-left
+            i.fa.fa-chevron-right.thumbnail-advance-right
+        .slideshow-modal
+            .modal-overlay
+            .modal-contents
+                .modal-image
+                .modal-caption
+                i.fa.fa-chevron-left.image-advance-left
+                i.fa.fa-chevron-right.image-advance-right
+            i.fa.fa-times.modal-close
 
 mixin titledSection(title)
     .row.project-description-section
