@@ -1,0 +1,24 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    -
+        var projectName = "html-form-renderer";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "::scrollbar";
+        var projectHeadline = " is a camera rendered with scrollbars.";
+        var projectDetails = [
+            "2016",
+            "<a href='https://github.com/mikewesthad/html-form-renderer'>Source Code</a>",
+            "Tags: Sketches"
+        ];
+
+block projectDescription
+
+    +fullWidthSection()
+        +demoLink("//www.mikewesthad.com/html-form-renderer/")
+            img(src=projectImagePath+"demo.gif" style="width: 100%")
+
+    +titledSection("Overview")
+        p A camera rendered with scrollbars, inspired by #[a(href="http://rhizome.org/art/artbase/artwork/form-art/") Form Art] (1997) by Alexei Shulgin.
+
+        p A demo from my Web Art class. #[a(href="//www.mikewesthad.com/html-form-renderer/") Live version].
