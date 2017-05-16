@@ -1,0 +1,69 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    - 
+        var projectName = "laf-creative-coding";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "";
+        var projectHeadline = "I was invited to give creative coding workshops at Lafayette College.";
+        var projectDetails = [
+            "2017",
+            "<a href='https://github.com/mikewesthad/lafayette-creative-coding-p5-workshop'>Source Code</a>",
+            "Tags: Teaching"
+        ];
+        var projectImageNames = [
+            "laf-02-conditionals.gif",
+            "laf-03-transforms.gif",
+            "laf-04-image.gif",
+            "laf-05-video-bonus.gif"
+        ];
+        var projectImageCaptions = [
+            "Drawing with symmetry",
+            "Creating designs with transformations",
+            "Painting with images",
+            "Patining with the webcam"
+        ];
+
+block projectDescription
+
+    //- +gallery(projectImagePath, projectImageNames, projectImageCaptions)
+
+    //- Custom gallery with GIF support
+    .row.project-description-section.slideshow
+        .selected-image
+        .caption
+        .thumbnail-wrap
+            .visible-thumbnails
+                .thumbnails
+                    each imageName, i in projectImageNames
+                        -
+                            var caption = (projectImageCaptions && projectImageCaptions[i]) || "";
+                            var fileInfo = imageName.split(".");
+                            var thumbnailPath = projectImagePath + fileInfo[0] + "-small.jpg";
+                            var largePath = projectImagePath + imageName;
+                        img(src=thumbnailPath, data-large-path=largePath, data-caption=caption)
+            i.fa.fa-chevron-left.thumbnail-advance-left
+            i.fa.fa-chevron-right.thumbnail-advance-right
+        .slideshow-modal
+            .modal-overlay
+            .modal-contents
+                .modal-image
+                .modal-caption
+                i.fa.fa-chevron-left.image-advance-left
+                i.fa.fa-chevron-right.image-advance-right
+            i.fa.fa-times.modal-close
+
+    +titledSection("Overview") 
+        p I was invited to give a pair of workshops at Lafayette College on creative coding for the web. Each workshop was a crash course on being creative with JavaScript & #[a(href="https://p5js.org/") p5.js]. p5.js is a JavaScript library with the goal of making coding accessible for artists, designers, educators and beginners.
+
+        p One workshop was beginner-friendly, assuming no prior knowledge, and the other was for students with a computer science background. By the end of both workshops, participants had their own interactive projects hosted on their own websites. More information #[a(href="https://github.com/mikewesthad/lafayette-creative-coding-p5-workshop") here]. 
+
+    +titledSection("Outline")
+        p Outline of material from both workshops:
+        p 
+            ul
+                li Survey of art make with and for the web 
+                li Web coding setup with Atom.io
+                li Overview of web technologies & p5.js
+                li Lab: translating movement, images & video into visual designs
+                li Lab: hosting your sketches online through GitHub Pages

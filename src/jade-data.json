@@ -1,6 +1,16 @@
 {
     "projects": [
         {  
+            "name": "laf-creative-coding",
+            "caption": "Creative Coding Workshops",
+            "images": [
+                "02-conditionals-small.jpg",
+                "04-image-small.jpg",
+                "05-video-bonus-small.jpg"
+            ],
+            "categories": ["teaching"]
+        },
+        {  
             "name": "codeabode-teaching",
             "caption": "Web Curriculum Director",
             "images": [

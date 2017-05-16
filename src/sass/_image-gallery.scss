@@ -343,4 +343,10 @@
     #slide-loop-large {
         background-color: #272822;
     }
+
+    #laf-02-conditionals,
+    #laf-04-image,
+    #laf-05-video-bonus {
+        @include object-fit(contain);
+    }
 }
