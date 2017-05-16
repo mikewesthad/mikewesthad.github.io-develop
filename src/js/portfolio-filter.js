@@ -81,9 +81,8 @@ PortfolioFilter.prototype._filterProjects = function (category) {
             }, this._transitionDuration, "easeInOutCubic", function () {
                 $element.hide();
             });
-        }
-        // If an element is selected: show & bump z-index & animate to position 
-        else {
+        } else {
+            // If an element is selected: show & bump z-index & animate to position 
             $element.show();
             $element.css("zIndex", 0);
             var newPos = this._indexToXY(selectedIndex);

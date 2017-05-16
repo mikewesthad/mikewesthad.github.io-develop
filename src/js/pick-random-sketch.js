@@ -31,9 +31,8 @@ module.exports = function pickRandomSketch() {
         if (numSketches > 1) {
             seenSketchNames = [seenSketchNames.pop()];
             unseenSketchNames = findUnseenSketches(seenSketchNames);
-        } 
-        // If we've only got one sketch, then we can't do much...
-        else {
+        } else {
+            // If we've only got one sketch, then we can't do much...
             seenSketchNames = [];
             unseenSketchNames = Object.keys(sketchConstructors);            
         }

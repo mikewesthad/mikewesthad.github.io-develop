@@ -1,8 +1,8 @@
 /**
  * Gulp Setup
- * 
+ *
  * The recipe provides:
- * 
+ *
  * - A local server
  * - SASS -> CSS
  * - CommonJS modules via browserify
@@ -11,7 +11,7 @@
  *
  * Run "gulp" to start the default task, which builds the site and serves it.
  * Run with the command line flag "gulp -p" or "gulp --production" to enable
- * uglification of JS code. It is helpful while developing to NOT uglify code. 
+ * uglification of JS code. It is helpful while developing to NOT uglify code.
  */
 
 
@@ -37,8 +37,8 @@ var paths = {
         dest: dest
     },
     jsLibs: {
-        src: [src + "/js/libs/**/*.js", 
-            "node_modules/bootstrap-sass/assets/javascripts/bootstrap.js",            
+        src: [src + "/js/libs/**/*.js",
+            "node_modules/bootstrap-sass/assets/javascripts/bootstrap.js",
             "node_modules/velocity-animate/velocity.js"],
         outputFile: "libs.js",
         dest: dest + "/js"
@@ -81,29 +81,36 @@ var newer = require("gulp-newer");
 var deployGit = require("gulp-deploy-git");
 var open = require("gulp-open");
 var gutil = require("gulp-util");
-var jshint = require("gulp-jshint"); // Requires npm jshint
-var stylish = require("jshint-stylish");
 var browserify = require("browserify");
 var source = require("vinyl-source-stream");
 var buffer = require("vinyl-buffer");
 var del = require("del");
 var express = require("express");
-var path = require("path");
 var fs = require("fs");
 var runSequence = require("run-sequence");
 var gulpif = require("gulp-if");
-var pug = require("gulp-pug"); // Pug === Jade templates
+var pug = require("gulp-pug");
 var data = require("gulp-data");
 var responsive = require("gulp-responsive");
+var eslint = require("gulp-eslint");
+var plumber = require("gulp-plumber");
+var beep = require("beepbeep");
 
 // Check the command line to see if this is a production build
 var isProduction = (gutil.env.p || gutil.env.production);
 console.log("Build environment: " + (isProduction ? "production" : "debug"));
 
-// Check the command line to see if it is a release deploy or a prototype
-var isRelease = (gutil.env.r || gutil.env.release);
-console.log("Deploy target: " + (isRelease ? "release" : "prototype"));
-
+function beepLogError(err) {
+    beep();
+    var stringError = err.messageFormatted || err.message || err.toString();
+    var msg = [
+        gutil.colors.bgRed.bold("Gulp error in plugin: " + err.plugin),
+        gutil.colors.green(stringError),
+        ""
+    ].join("\n");
+    gutil.log(msg);
+    this.emit("end");
+}
 
 // -- BUILD TASKS --------------------------------------------------------------
 // These gulp tasks take everything that is in src/, process them (e.g. turn
@@ -126,7 +133,7 @@ gulp.task("jade", function () {
         .pipe(pug())
         .on("error", function (err) {
             gutil.log(err);
-            this.emit("end"); 
+            this.emit("end");
         })
         .pipe(gulp.dest(paths.jade.dest))
         .pipe(liveReload());
@@ -137,13 +144,13 @@ gulp.task("jade", function () {
 gulp.task("sass", function () {
     return gulp.src(paths.sass.src)
         .pipe(sourcemaps.init())
-            .pipe(sass({ 
+            .pipe(sass({
                 outputStyle: "compressed",
                 includePaths: paths.sass.include
             }).on("error", sass.logError))
             .pipe(autoprefixer({
                 browsers: [
-                    // Matches bootstrap: 
+                    // Matches bootstrap:
                     // https://github.com/twbs/bootstrap-sass#sass-autoprefixer
                     "Android 2.3",
                     "Android >= 4",
@@ -168,7 +175,7 @@ gulp.task("js-libs", function() {
     return gulp.src(paths.jsLibs.src)
         // .pipe(order([
         //     // Order the files here, if necessary
-        //     "**/*.js" 
+        //     "**/*.js"
         // ]))
         .pipe(sourcemaps.init())
             .pipe(concat(paths.jsLibs.outputFile))
@@ -179,8 +186,8 @@ gulp.task("js-libs", function() {
         .pipe(liveReload());
 });
 
-// Combine, sourcemap and uglify our JS libraries into main.js. This uses 
-// browserify (CommonJS-style modules). 
+// Combine, sourcemap and uglify our JS libraries into main.js. This uses
+// browserify (CommonJS-style modules).
 gulp.task("js-browserify", function() {
     var b = browserify({
         entries: paths.js.entry,
@@ -191,7 +198,7 @@ gulp.task("js-browserify", function() {
             gutil.log(err);
             // To prevent watch task from crashing when browserify hits an error
             // we need this:
-            this.emit("end"); 
+            this.emit("end");
         })
         .pipe(source(paths.js.outputFile))
         .pipe(buffer())
@@ -207,8 +214,9 @@ gulp.task("js-browserify", function() {
 // Lint only our custom JS.
 gulp.task("js-lint", function() {
     return gulp.src(paths.js.src)
-        .pipe(jshint())
-        .pipe(jshint.reporter(stylish));
+        .pipe(plumber({ errorHandler: beepLogError }))
+        .pipe(eslint())
+        .pipe(eslint.format());
 });
 
 // Take any (new) images from src/images over to build/images.
@@ -219,32 +227,31 @@ gulp.task("images", function () {
 });
 
 gulp.task("resize-images", function () {
-    return gulp.src([
-            "src/original-images/**/*.{png,PNG,jpg,JPG}"
-        ])
+    return gulp.src(["src/original-images/**/*.{png,PNG,jpg,JPG}"])
         .pipe(newer({
             dest: "src/images",
             map: function (relativePath) {
                 // Check if file is newer than small.jpg version of file in dest
-                return relativePath.split(".").slice(0, -1).join(".") + 
+                return relativePath.split(".").slice(0, -1).join(".") +
                     "-small.jpg";
             }
         }))
         .pipe(responsive({
             "**/*.*": [
-            // {
-            //     width: 1920,
-            //     height: 1080,
-            //     max: true,
-            //     rename: { suffix: "-xlarge", extname: ".jpg" }
-            // },
-            {
-                width: 1200,
-                rename: { suffix: "-large", extname: ".jpg" }
-            }, {
-                width: 300,
-                rename: { suffix: "-small", extname: ".jpg" }                
-            }]
+                // {
+                //     width: 1920,
+                //     height: 1080,
+                //     max: true,
+                //     rename: { suffix: "-xlarge", extname: ".jpg" }
+                // },
+                {
+                    width: 1200,
+                    rename: { suffix: "-large", extname: ".jpg" }
+                }, {
+                    width: 300,
+                    rename: { suffix: "-small", extname: ".jpg" }
+                }
+            ]
         }, {
             quality: 90,
             format: "jpeg",
@@ -258,9 +265,7 @@ gulp.task("resize-images", function () {
 });
 
 gulp.task("copy-gifs", function () {
-    return gulp.src([
-            "src/original-images/**/*.{gif,GIF}"
-        ])
+    return gulp.src(["src/original-images/**/*.{gif,GIF}"])
         .pipe(gulp.dest("src/images"));
 });
 
@@ -339,7 +344,7 @@ gulp.task("push:git", function () {
     return gulp.src(paths.deploy.src, { read: false })
         .pipe(deployGit({
             prefix: dest,
-            repository: 
+            repository:
                 "https://github.com/mikewesthad/mikewesthad.github.io.git",
             message: "Rebuild from mikewesthad.github.io-develop"
         }));

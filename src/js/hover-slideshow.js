@@ -3,10 +3,10 @@ module.exports = HoverSlideshows;
 var utilities = require("./utilities.js");
 
 function HoverSlideshows(slideshowDelay, transitionDuration) {
-    this._slideshowDelay = (slideshowDelay !== undefined) ? slideshowDelay : 
+    this._slideshowDelay = (slideshowDelay !== undefined) ? slideshowDelay :
         2000;
-    this._transitionDuration = (transitionDuration !== undefined) ? 
-        _transitionDuration : 1000;   
+    this._transitionDuration = (transitionDuration !== undefined) ?
+        transitionDuration : 1000;
 
     this._slideshows = [];
     this.reload();
@@ -84,8 +84,8 @@ Slideshow.prototype._onEnter = function () {
 };
 
 Slideshow.prototype._onLeave = function () {
-    clearInterval(this._timeoutId);  
-    this._timeoutId = null;      
+    clearInterval(this._timeoutId);
+    this._timeoutId = null;
 };
 
 Slideshow.prototype._advanceSlideshow = function () {
@@ -125,6 +125,6 @@ Slideshow.prototype._advanceSlideshow = function () {
     }, this._transitionDuration, "easeInOutQuad");
 
     // Schedule next transition
-    this._timeoutId = setTimeout(this._advanceSlideshow.bind(this), 
+    this._timeoutId = setTimeout(this._advanceSlideshow.bind(this),
         this._slideshowDelay);
 };

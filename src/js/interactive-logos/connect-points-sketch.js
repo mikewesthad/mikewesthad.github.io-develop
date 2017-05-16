@@ -14,15 +14,15 @@ function Sketch($nav, $navLogo) {
 
 Sketch.prototype._onResize = function (p) {
     BaseLogoSketch.prototype._onResize.call(this, p);
-    this._spacing = utils.map(this._fontSize, 20, 40, 2, 5, {clamp: true, 
+    this._spacing = utils.map(this._fontSize, 20, 40, 2, 5, {clamp: true,
         round: true});
-    // Update the bboxText, place over the nav text logo and then shift its 
+    // Update the bboxText, place over the nav text logo and then shift its
     // anchor back to (center, center) while preserving the text position
     this._bboxText.setText(this._text)
         .setTextSize(this._fontSize)
         .setAnchor(BboxText.ALIGN.BOX_LEFT, BboxText.BASELINE.ALPHABETIC)
         .setPosition(this._textOffset.left, this._textOffset.top)
-        .setAnchor(BboxText.ALIGN.BOX_CENTER, BboxText.BASELINE.BOX_CENTER, 
+        .setAnchor(BboxText.ALIGN.BOX_CENTER, BboxText.BASELINE.BOX_CENTER,
             true);
     this._drawStationaryLogo(p);
     this._points = this._bboxText.getTextPoints();
@@ -40,7 +40,7 @@ Sketch.prototype._drawStationaryLogo = function (p) {
 Sketch.prototype._setup = function (p) {
     BaseLogoSketch.prototype._setup.call(this, p);
 
-    // Create a BboxAlignedText instance that will be used for drawing and 
+    // Create a BboxAlignedText instance that will be used for drawing and
     // rotating text
     this._bboxText = new BboxText(this._font, this._text, this._fontSize, 0, 0,
         p);
@@ -52,7 +52,7 @@ Sketch.prototype._setup = function (p) {
     this._drawStationaryLogo(p);
 
     // Start the sin generator at its max value
-    this._thresholdGenerator = new SinGenerator(p, 0, 1, 0.02, p.PI/2); 
+    this._thresholdGenerator = new SinGenerator(p, 0, 1, 0.02, p.PI/2);
 };
 
 Sketch.prototype._draw = function (p) {
@@ -60,22 +60,21 @@ Sketch.prototype._draw = function (p) {
     if (!this._isMouseOver || !this._isOverNavLogo) return;
 
     // When the text is about to become active for the first time, clear
-    // the stationary logo that was previously drawn. 
+    // the stationary logo that was previously drawn.
     if (this._isFirstFrame) {
         p.background(255);
         this._isFirstFrame = false;
     }
 
     if (this._fontSize > 30) {
-        this._thresholdGenerator.setBounds(0.2 * this._bboxText.height, 
-            0.47 * this._bboxText.height);        
-    }
-    else {
-        this._thresholdGenerator.setBounds(0.2 * this._bboxText.height, 
-            0.6 * this._bboxText.height);          
+        this._thresholdGenerator.setBounds(0.2 * this._bboxText.height,
+            0.47 * this._bboxText.height);
+    } else {
+        this._thresholdGenerator.setBounds(0.2 * this._bboxText.height,
+            0.6 * this._bboxText.height);
     }
     var distanceThreshold = this._thresholdGenerator.generate();
-    
+
     p.background(255, 100);
     p.strokeWeight(1);
     for (var i = 0; i < this._points.length; i += 1) {
@@ -88,11 +87,11 @@ Sketch.prototype._draw = function (p) {
                 p.noStroke();
                 p.fill("rgba(165, 0, 173, 0.25)");
                 p.ellipse((point1.x + point2.x) / 2, (point1.y + point2.y) / 2,
-                    dist, dist);  
+                    dist, dist);
 
                 p.stroke("rgba(165, 0, 173, 0.25)");
                 p.noFill();
-                p.line(point1.x, point1.y, point2.x, point2.y);  
+                p.line(point1.x, point1.y, point2.x, point2.y);
             }
         }
     }

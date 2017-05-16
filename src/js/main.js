@@ -16,10 +16,10 @@ var mainNav = new MainNav(loader);
 // Interactive logo in navbar
 var nav = $("nav.navbar");
 var navLogo = nav.find(".navbar-brand");
-var sketch = new Sketch(nav, navLogo);
+new Sketch(nav, navLogo);
 
 // Widget globals
-var hoverSlideshows, portfolioFilter;
+var portfolioFilter;
 
 // Load all widgets
 onPageLoad();
@@ -44,7 +44,7 @@ function onPopState(e) {
 
 function onPageLoad() {
     // Reload all plugins/widgets
-    hoverSlideshows = new HoverSlideshows();
+    new HoverSlideshows();
     portfolioFilter = new PortfolioFilter(loader);
     slideshows.init();
     objectFitImages();
@@ -52,7 +52,7 @@ function onPageLoad() {
 
     // Slightly redundant, but update the main nav using the current URL. This
     // is important if a page is loaded by typing a full URL (e.g. going
-    // directly to /work.html) or when moving from work.html to a project. 
+    // directly to /work.html) or when moving from work.html to a project.
     mainNav.setActiveFromUrl();
 }
 

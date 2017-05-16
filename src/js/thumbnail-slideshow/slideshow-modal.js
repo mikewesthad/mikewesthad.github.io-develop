@@ -123,7 +123,7 @@ SlideshowModal.prototype._onResize = function () {
         this._$imageRight.outerWidth(true);
     // Hack for now - budget for 2x the caption height. 
     var captionHeight = 2 * this._$caption.outerHeight(true); 
-    var imagePadding = $image.innerWidth();
+    // var imagePadding = $image.innerWidth();
 
     // Calculate the available area for the modal
     var mw = this._$modal.width() - controlsWidth;

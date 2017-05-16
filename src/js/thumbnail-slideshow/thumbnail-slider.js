@@ -177,8 +177,6 @@ ThumbnailSlider.prototype._scrollToThumbnail = function (index) {
     index = Math.max(index, this._scrollBounds.min);
     index = Math.min(index, this._scrollBounds.max);
     this._scrollIndex = index;
-
-    console.log(this._scrollIndex);
     
     // Find the "left" position of the thumbnail container that would put the 
     // thumbnail at index at the center
@@ -218,9 +216,9 @@ ThumbnailSlider.prototype._updateThumbnailControls = function () {
     this._$advanceRight.removeClass("disabled");
     
     // Disable if we've reached the the max or min limit
-    var midScrollIndex = Math.floor((this._numVisible - 1) / 2);
-    var minScrollIndex = midScrollIndex;
-    var maxScrollIndex = this._numImages - 1 - midScrollIndex;
+    // var midScrollIndex = Math.floor((this._numVisible - 1) / 2);
+    // var minScrollIndex = midScrollIndex;
+    // var maxScrollIndex = this._numImages - 1 - midScrollIndex;
     if (this._scrollIndex >= this._scrollBounds.max) {
         this._$advanceRight.addClass("disabled");
     } else if (this._scrollIndex <= this._scrollBounds.min) {

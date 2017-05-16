@@ -5,7 +5,7 @@ function MainNav(loader) {
     this._$logo = $("nav.navbar .navbar-brand");
     this._$nav = $("#main-nav");
     this._$navLinks = this._$nav.find("a");
-    this._$activeNav = this._$navLinks.find(".active"); 
+    this._$activeNav = this._$navLinks.find(".active");
     this._$navLinks.on("click", this._onNavClick.bind(this));
     this._$logo.on("click", this._onLogoClick.bind(this));
 }
@@ -15,8 +15,7 @@ MainNav.prototype.setActiveFromUrl = function () {
     var url = location.pathname;
     if (url === "/index.html" || url === "/") {
         this._activateLink(this._$navLinks.filter("#about-link"));
-    }
-    else if (url === "/work.html") {        
+    } else if (url === "/work.html") {
         this._activateLink(this._$navLinks.filter("#work-link"));
     }
 };
@@ -48,5 +47,5 @@ MainNav.prototype._onNavClick = function (e) {
     this._deactivate();
     this._activateLink($target);
     var url = $target.attr("href");
-    this._loader.loadPage(url, {}, true);    
+    this._loader.loadPage(url, {}, true);
 };

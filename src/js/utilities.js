@@ -58,7 +58,7 @@ exports.map = function (num, min1, max1, min2, max2, options) {
 
 exports.getQueryParameters = function () {
     // Check for query string
-    qs = window.location.search;
+    var qs = window.location.search;
     if (qs.length <= 1) return {};
     // Query string exists, parse it into a query object
     qs = qs.substring(1); // Remove the "?" delimiter
