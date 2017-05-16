@@ -11,6 +11,16 @@
             "categories": ["teaching"]
         },
         {
+            "name": "uptake-game-design",
+            "caption": "Game Design at Uptake",
+            "images": [
+                "scene-3-small.jpg",
+                "scene-2-small.jpg",
+                "scene-1-small.jpg"
+            ],
+            "categories": ["teaching"]
+        },
+        {
             "name": "codeabode-teaching",
             "caption": "Web Curriculum Director",
             "images": [

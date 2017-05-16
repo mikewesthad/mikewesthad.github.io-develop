@@ -1,0 +1,42 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    -
+        var projectName = "uptake-game-design";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "";
+        var projectHeadline = "I taught a game design elective at Uptake’s internal company university.";
+        var projectDetails = [
+            "2017",
+            "<a href='https://uptake.com/'>Uptake</a>",
+            "Tags: Teaching"
+        ];
+        var projectImageNames = [
+            "scene-3-large.jpg",
+            "scene-2-large.jpg",
+            "scene-1-large.jpg"
+        ];
+        var projectImageCaptions = [
+            "Abstract terrain",
+            "Oasis terrain",
+            "Platforming"
+        ];
+
+block projectDescription
+    +gallery(projectImagePath, projectImageNames, projectImageCaptions)
+
+    +titledSection("Overview")
+        p I taught a "Game Making in Unity" elective for Uptake's internal company university. The one day class was a crash course introduction to working in 3D with a popular, cross-platform game engine called #[a(href="https://unity3d.com/") Unity]. The class was beginner-friendly and assumed no prior experience. By the end of the elective, participants built their own first-person exploration games.
+
+        p Topics covered: 3D objects, materials, lights, physics, using C# to detect interactions, spatial audio, post-processing and particles.
+
+    +titledSection("Outline")
+        p Outline of material:
+        p
+            ul
+                li Survey of exploration & wandering games
+                li Introduction to Unity and 3D concepts
+                li Lab: assembling a first-person scene
+                li Lab: building a physics-based platformer
+                li Lab: building an explorable world
+                li Building & sharing a cross-platform application
