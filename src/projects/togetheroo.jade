@@ -1,0 +1,30 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    -
+        var projectName = "togetheroo";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "";
+        var projectHeadline = "I built a real-time & interactive video chat platform that families.";
+        var projectDetails = [
+            "2016 - Present",
+            "Client: <a href='http://resonantgames.com'>Resonant Games</a>",
+            "Tags: Development"
+        ];
+
+block projectDescription
+
+    +titledSection("Overview")
+        p I was contracted by Resonant Games to build a real-time video chat platform, #[a(href="https://togetheroo.com/") Togetheroo]. The mission was to create a platform that connects family members over long distance. While video chatting, users can open a shared play space to play kid-friendly games and other educational apps. The current application library includes a collaborative drawing application and a mix-and-match smoothie game. See Bart Yeary's (of Resonant Games) demo and introduction videos below.
+
+        p The project is under development, but you can open up a play space #[a(href="https://togetheroo.com/playspace/") here] and invite a friend.
+
+    +fullWidthSection()
+        <iframe src="https://www.youtube.com/embed/g3iunJW8spg" width="100%" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+    +fullWidthSection()
+        <iframe src="https://www.youtube.com/embed/wmhcIe4w8Q0" width="100%" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+    +titledSection("Technical Details")
+        p The platform is built using real-time communication technologies – #[a(href="https://firebase.google.com/") Firebase] and #[a(href="https://tokbox.com/") OpenTok]. The applications were built with #[a(href="https://p5js.org/") p5.js] and #[a(href="http://phaser.io/") Phaser].
+
