@@ -1,0 +1,34 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    -
+        var projectName = "edovo";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "";
+        var projectHeadline = "I designed an online web development curriculum for incarcerated learners";
+        var projectDetails = [
+            "2016 - Present",
+            "<a href='https://edovo.com/'>Edovo</a>",
+            "Tags: Teaching"
+        ];
+        var projectImageNames = [
+            "codevolve-1-large.jpg",
+            "reading-html-3-large.jpg",
+            "reading-css-09-large.jpg"
+        ];
+        var projectImageCaptions = [
+            "Example lab in the Codevolve platform",
+            "Excerpt from HTML reading",
+            "Example project from CSS lab"
+        ];
+
+block projectDescription
+
+    +gallery(projectImagePath, projectImageNames, projectImageCaptions)
+
+    +titledSection("Overview")
+        p I created a pair of courses to help incarcerated individuals – who have no prior coding experience – start building employable, front-end web development skills. The courses were built for #[a(href="https://edovo.com/") Edovo's] tablet-based learning platform, which is available in facilities across the US.
+
+        p The courses take a hands-on and project-based approach to HTML & CSS. In each lesson of the courses, a new concept is introduced through readings & examples and then is immediately reinforced and practiced in an interactive coding lab.
+
+        p The coding labs were built with the #[a(href="https://www.codevolve.com/") Codevolve] coding environment which can check a student’s code as they type it. Using regular expressions, I could provide students with positive reinforcement for completing a step successfully, or give them directed hints and encouragement when they miss a step.

@@ -51,6 +51,15 @@
             "categories": ["art"]
         },
         {
+            "name": "edovo",
+            "caption": "Education for Incarcerated",
+            "images": [
+                "codevolve-1-small.jpg",
+                "reading-html-3-small.jpg"
+            ],
+            "categories": ["teaching"]
+        },
+        {
             "name": "youtube-spaces",
             "caption": "YouTube Spaces",
             "images": [
