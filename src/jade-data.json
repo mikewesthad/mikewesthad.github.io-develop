@@ -51,6 +51,15 @@
             "categories": ["art"]
         },
         {
+            "name": "togetheroo",
+            "caption": "Togetheroo",
+            "images": [
+                "togetheroo-drawing-cropped-small.jpg",
+                "togetheroo-smoothie-cropped-small.jpg"
+            ],
+            "categories": ["development"]
+        },
+        {
             "name": "edovo",
             "caption": "Education for Incarcerated",
             "images": [
