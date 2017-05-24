@@ -12,8 +12,17 @@ block variables
             "Tags: Development"
         ];
 
-block projectDescription
+block metaOpenGraph
+    - const ogTitle = "Togetheroo";
+    - const ogDescription = "I built a real-time & interactive video chat platform that connects families.";
+    - const ogImage = `https://www.mikewesthad.com/images/projects/${projectName}/togetheroo-smoothie-cropped-large.jpg`;
+    meta(property="og:type" content="website")
+    meta(property="og:url" content=`https://www.mikewesthad.com/${projectName}/`)
+    meta(property="og:image" content=ogImage)
+    meta(property="og:title" content=ogTitle)
+    meta(property="og:description" content=ogDescription)
 
+block projectDescription
     +titledSection("Overview")
         p I was contracted by Resonant Games to build a real-time video chat platform, #[a(href="https://togetheroo.com/") Togetheroo]. The mission was to create a platform that connects family members over long distance. While video chatting, users can open a shared play space to play kid-friendly games and other educational apps. The current application library includes a collaborative drawing application and a mix-and-match smoothie game. See Bart Yeary's (of Resonant Games) demo and introduction videos below.
 

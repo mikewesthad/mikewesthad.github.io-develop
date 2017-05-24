@@ -1,7 +1,7 @@
 extend ../jade-layouts/_project-page.jade
 
 block variables
-    - 
+    -
         var projectName = "msp-game-design";
         var projectImagePath = "/images/projects/" + projectName + "/";
         var projectTitle = "";
@@ -25,11 +25,21 @@ block variables
             "final-exhibit-1-large.jpg"
         ];
 
+block metaOpenGraph
+    - const ogTitle = "Middle School Game Design Camp";
+    - const ogDescription = "I designed and taught a middle school game design camp with Kayla Lewis at the School of the Art Institute (SAIC)";
+    - const ogImage = `https://www.mikewesthad.com/images/projects/${projectName}/working-5-large.jpg`;
+    meta(property="og:type" content="website")
+    meta(property="og:url" content=`https://www.mikewesthad.com/${projectName}/`)
+    meta(property="og:image" content=ogImage)
+    meta(property="og:title" content=ogTitle)
+    meta(property="og:description" content=ogDescription)
+
 block projectDescription
 
     +gallery(projectImagePath, projectImageNames)
-    
-    +titledSection("Overview") 
+
+    +titledSection("Overview")
         p I designed and taught a middle school game design camp with #[a(href="http://kaylalewis.net") Kayla Lewis] at the School of the Art Institute (SAIC). See the course #[a(href="http://www.mspgamedesign.com/index.html") website] for more details and live versions of student projects.
 
         p Students explored the potential of games by creating three different types of games with three different technologies: platformer games using #[a(href="//www.stencyl.com") Stencyl] game maker; hand-drawn, point-and-click exploration games in HTML &amp; CSS; and interactive text games in JavaScript.

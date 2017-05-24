@@ -1,7 +1,7 @@
 extend ../jade-layouts/_project-page.jade
 
 block variables
-    - 
+    -
         var projectName = "cps-convergence";
         var projectImagePath = "/images/projects/" + projectName + "/";
         var projectTitle = "";
@@ -43,14 +43,25 @@ block variables
             "Another group preparing to see how far their design can travel."
         ];
 
+
+block metaOpenGraph
+    - const ogTitle = "Convergence in Chicago Public Schools";
+    - const ogDescription = "I collaborated with instructors in Chicago Public Schools to build hands-on lessons that used art & technology to deepen learning and meet the CPS core standards.";
+    - const ogImage = `https://www.mikewesthad.com/images/projects/${projectName}/pollard-bot-design-2-large.jpg`;
+    meta(property="og:type" content="website")
+    meta(property="og:url" content=`https://www.mikewesthad.com/${projectName}/`)
+    meta(property="og:image" content=ogImage)
+    meta(property="og:title" content=ogTitle)
+    meta(property="og:description" content=ogDescription)
+
 block projectDescription
 
-    +titledSection("Overview") 
+    +titledSection("Overview")
         p Through #[a(href="//convergenceacademies.org") Convergence Academies], I collaborated with instructors in Chicago Public Schools (CPS) to build hands-on lessons that used art &amp; technology to deepen learning and meet the CPS core standards. I worked with a series of instructors across science &amp; math classes. Below are two lessons that I co-created in Physics and Biology.
 
 
-    +titledSection("Physics: Robot Challenge") 
-        p Ryan Pollard and I created a series of lessons to teach core electricity concepts (voltage, current, etc.) as well as give students practical experience in building circuits. 
+    +titledSection("Physics: Robot Challenge")
+        p Ryan Pollard and I created a series of lessons to teach core electricity concepts (voltage, current, etc.) as well as give students practical experience in building circuits.
 
         p The lessons started with basic LEDs &amp; motors and culminated in a group project in which students were given the raw materials to build a robot that can navigate a course. Over a couple of weeks, students designed, tested and iterated on their robot designs.
 
@@ -59,10 +70,10 @@ block projectDescription
     +gallery(projectImagePath, pollardImages, pollardCaptions)
 
 
-    +titledSection("Biology: Evolution Card Game") 
+    +titledSection("Biology: Evolution Card Game")
         p Cody Anderson and I created a series of lessons to teach the core concepts of evolution. After learning about survival of the fittest, students designed their own frankenstein animals &mdash; by combining parts from existing animals &mdash; that could survive various environments.
 
-        p Drawing inspritation from popular argument-based card games (e.g. Apples to Apples, Cards Against Humanity), we designed an evolution card game. Students designed their own "super" animals. In each round of the game, a situation card (e.g. flood, extreme heat, etc.) would be randomly picked. Students would then argue why their animal was best suited to the particular situation, using arguments based on the specific adaptations of their animal. After each student made their case, a judge would decide who had the most convincing argument.    
+        p Drawing inspritation from popular argument-based card games (e.g. Apples to Apples, Cards Against Humanity), we designed an evolution card game. Students designed their own "super" animals. In each round of the game, a situation card (e.g. flood, extreme heat, etc.) would be randomly picked. Students would then argue why their animal was best suited to the particular situation, using arguments based on the specific adaptations of their animal. After each student made their case, a judge would decide who had the most convincing argument.
 
         //- p I was mainly responsible for supervising the games, mentoring students as they designed their animals, designing the card templates and giving lessons in Photoshop. Cody and I collaborated on the rules of the game.
 
