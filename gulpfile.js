@@ -95,6 +95,7 @@ var responsive = require("gulp-responsive");
 var eslint = require("gulp-eslint");
 var plumber = require("gulp-plumber");
 var beep = require("beepbeep");
+var ngrok = require("ngrok");
 
 // Check the command line to see if this is a production build
 var isProduction = (gutil.env.p || gutil.env.production);
@@ -319,6 +320,13 @@ gulp.task("express-server", function () {
     var app = express();
     app.use(express.static(dest));
     app.listen(8080);
+});
+
+gulp.task("ngrok", function () {
+    ngrok.connect({proto: "http", addr: 8080}, function(err, url) {
+        if (err) console.error(err);
+        else console.log("Hosting localserver at: " + url);
+    });
 });
 
 // Automatically open localhost:8080/ in the browser using whatever the default
