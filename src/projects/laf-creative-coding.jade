@@ -1,7 +1,7 @@
 extend ../jade-layouts/_project-page.jade
 
 block variables
-    - 
+    -
         var projectName = "laf-creative-coding";
         var projectImagePath = "/images/projects/" + projectName + "/";
         var projectTitle = "";
@@ -23,6 +23,16 @@ block variables
             "Painting with images",
             "Patining with the webcam"
         ];
+
+block metaOpenGraph
+    - const ogTitle = "Creative Coding Workshops at Lafayette College";
+    - const ogDescription = "I was invited to give a pair of workshops at Lafayette College on creative coding for the web. Each workshop was a crash course on being creative with JavaScript & p5.js.";
+    - const ogImage = `https://www.mikewesthad.com/images/projects/${projectName}/laf-02-conditionals-large.jpg`;
+    meta(property="og:type" content="website")
+    meta(property="og:url" content=`https://mikewesthad.com/${projectName}/`)
+    meta(property="og:image" content=ogImage)
+    meta(property="og:title" content=ogTitle)
+    meta(property="og:description" content=ogDescription)
 
 block projectDescription
 
@@ -53,16 +63,16 @@ block projectDescription
                 i.fa.fa-chevron-right.image-advance-right
             i.fa.fa-times.modal-close
 
-    +titledSection("Overview") 
+    +titledSection("Overview")
         p I was invited to give a pair of workshops at Lafayette College on creative coding for the web. Each workshop was a crash course on being creative with JavaScript & #[a(href="https://p5js.org/") p5.js]. p5.js is a JavaScript library with the goal of making coding accessible for artists, designers, educators and beginners.
 
-        p One workshop was beginner-friendly, assuming no prior knowledge, and the other was for students with a computer science background. By the end of both workshops, participants had their own interactive projects hosted on their own websites. More information #[a(href="https://github.com/mikewesthad/lafayette-creative-coding-p5-workshop") here]. 
+        p One workshop was beginner-friendly, assuming no prior knowledge, and the other was for students with a computer science background. By the end of both workshops, participants had their own interactive projects hosted on their own websites. More information #[a(href="https://github.com/mikewesthad/lafayette-creative-coding-p5-workshop") here].
 
     +titledSection("Outline")
         p Outline of material from both workshops:
-        p 
+        p
             ul
-                li Survey of art make with and for the web 
+                li Survey of art make with and for the web
                 li Web coding setup with Atom.io
                 li Overview of web technologies & p5.js
                 li Lab: translating movement, images & video into visual designs
