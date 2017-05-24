@@ -1,11 +1,15 @@
 doctype html
 html(lang="en")
-  
+
   head
+    block variables
+
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1")
-    
+
+    block metaOpenGraph
+
     // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
     title mikewesthad
 
@@ -21,8 +25,8 @@ html(lang="en")
     // LiveReload only on localhost
     script(type="text/javascript").
       if (location.hostname === "127.0.0.1" || location.hostname === "localhost") {
-        document.write('<script src="http://'+(location.host || 'localhost').split(':')[0]+':35729/livereload.js?snipver=1"></scr' + 'ipt>'); 
-        // ^ Dumb jade hack to get it to stop interpretating the script 
+        document.write('<script src="http://'+(location.host || 'localhost').split(':')[0]+':35729/livereload.js?snipver=1"></scr' + 'ipt>');
+        // ^ Dumb jade hack to get it to stop interpretating the script
       }
 
     script(type="text/javascript").
@@ -33,12 +37,12 @@ html(lang="en")
       ga('create', 'UA-51816945-1', 'auto');
       ga('send', 'pageview');
 
-  body    
+  body
     block nav
 
     #content
       block content
 
     block footer
-    
+
     block scripts

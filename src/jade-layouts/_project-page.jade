@@ -38,7 +38,7 @@ mixin gallery(imagePath, imageNames, imageCaptions)
 mixin titledSection(title)
     .row.project-description-section
         .caption-left.col-md-2!= title
-        .section-right.col-md-10 
+        .section-right.col-md-10
             block
 
 mixin fullWidthSection()
@@ -47,14 +47,12 @@ mixin fullWidthSection()
             block
 
 block content
-    block variables
-    
     .container.project-page(id= projectTitle)
         #project-headline
             .project-headline
-                span.project-title!= projectTitle  
+                span.project-title!= projectTitle
                 != projectHeadline
-            ul.details.list-unstyled                
+            ul.details.list-unstyled
                 each detail, index in projectDetails
                     li!= detail
                     if index !== (projectDetails.length - 1)
