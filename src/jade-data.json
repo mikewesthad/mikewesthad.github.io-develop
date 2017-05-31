@@ -57,6 +57,14 @@
             "categories": ["teaching"]
         },
         {
+            "name": "uic-gameplay",
+            "caption": "Game Play Class",
+            "images": [
+                "cardboard-2-small.jpg"
+            ],
+            "categories": ["teaching"]
+        },
+        {
             "name": "promise-foods",
             "caption": "Promise Foods",
             "images": [
