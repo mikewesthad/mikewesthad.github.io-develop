@@ -1,0 +1,26 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    -
+        var projectName = "uic-interactive-3d";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "";
+        var projectHeadline = "Interactive 3D at UIC";
+        var projectDetails = [
+            "2016 - Present",
+            "Tags: Teaching"
+        ];
+
+block metaOpenGraph
+    - const ogTitle = "I taught Interactive 3D at UIC";
+    - const ogDescription = "";
+    - const ogImage = `https://www.mikewesthad.com/images/projects/${projectName}/kinect-1-large.jpg`;
+    meta(property="og:type" content="website")
+    meta(property="og:url" content=`https://www.mikewesthad.com/projects/${projectName}/`)
+    meta(property="og:image" content=ogImage)
+    meta(property="og:title" content=ogTitle)
+    meta(property="og:description" content=ogDescription)
+
+block projectDescription
+    +titledSection("Overview")
+        p I teach Interactive 3D at UIC. See the most recent #[a(href="https://www.mikewesthad.com/uic-interactive3d-spring2017/") class website].

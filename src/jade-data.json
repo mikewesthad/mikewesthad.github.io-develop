@@ -49,6 +49,14 @@
             "categories": ["teaching"]
         },
         {
+            "name": "uic-interactive-3d",
+            "caption": "Interactive 3D Class",
+            "images": [
+                "kinect-1-small.jpg"
+            ],
+            "categories": ["teaching"]
+        },
+        {
             "name": "promise-foods",
             "caption": "Promise Foods",
             "images": [
