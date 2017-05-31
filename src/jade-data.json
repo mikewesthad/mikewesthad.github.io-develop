@@ -41,6 +41,14 @@
             "categories": ["development"]
         },
         {
+            "name": "saic-web-art",
+            "caption": "Web Art Class",
+            "images": [
+                "google-frames-small.jpg"
+            ],
+            "categories": ["teaching"]
+        },
+        {
             "name": "promise-foods",
             "caption": "Promise Foods",
             "images": [
