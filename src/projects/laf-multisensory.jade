@@ -1,0 +1,29 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    -
+        var projectName = "laf-multisensory";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "";
+        var projectHeadline = "I built a model of how we integrate information across the senses.";
+        var projectDetails = [
+            "2009 - 2010",
+            "Python",
+            "Tags: Development"
+        ];
+
+block metaOpenGraph
+    - const ogTitle = "I built a model of how we integrate information across the senses.";
+    - const ogDescription = "";
+    - const ogImage = `https://www.mikewesthad.com/images/projects/${projectName}/multisensory-results-large.jpg`;
+    meta(property="og:type" content="website")
+    meta(property="og:url" content=`https://www.mikewesthad.com/projects/${projectName}/`)
+    meta(property="og:image" content=ogImage)
+    meta(property="og:title" content=ogTitle)
+    meta(property="og:description" content=ogDescription)
+
+block projectDescription
+    +titledSection("Overview")
+        p Scientists have traditionally studied the senses in isolation. Consequently, the standard view is that each sense processes its own information separately until, at a higher area in the brain, the senses are combined. Only relatively recently has this view been challenged. Building from existing models, I constructed and tested a multi-level model of multisensory integration using self-organizing maps.
+
+        p The research was published by Lafayette College in 2010. A copy of the PDF is available #[a(href="/docs/MultisensoryIntegration.pdf") here]. I presented a poster on the work at the 2010 Annual Society for Neuroscience conference.

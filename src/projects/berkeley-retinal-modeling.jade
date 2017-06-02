@@ -1,0 +1,29 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    -
+        var projectName = "berkeley-retinal-modeling";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "";
+        var projectHeadline = "I created a multi-layer computational model of the retina.";
+        var projectDetails = [
+            "2012 - 2013",
+            "Python",
+            "Tags: Development"
+        ];
+
+block metaOpenGraph
+    - const ogTitle = "I created a multi-layer computational model of the retina.";
+    - const ogDescription = "";
+    - const ogImage = `https://www.mikewesthad.com/images/projects/${projectName}/amacrine-cells-large.jpg`;
+    meta(property="og:type" content="website")
+    meta(property="og:url" content=`https://www.mikewesthad.com/projects/${projectName}/`)
+    meta(property="og:image" content=ogImage)
+    meta(property="og:title" content=ogTitle)
+    meta(property="og:description" content=ogDescription)
+
+block projectDescription
+    +titledSection("Overview")
+        p The retina is believed to be composed of parallel cellular circuits that each have a specialized function beyond just simply detecting the presence or absence of light. For my thesis at UC Berkeley, I created a computational model of one of those circuits that can detect motion. The model simulates multiple layers of cells in the retina that altogether give rise to this motion detection response. The model replicates the key findings from biological studies on the circuit.
+
+        p The work was published by UC Berkeley in 2013 #[a(href="http://oskicat.berkeley.edu/record=b23309182~S1") here]. A PDF copy of the work is available #[a(href="http://dams.lib.berkeley.edu/downloads/h702q664p") here]. I gave a talk on this work - entitled "Neural Processing in Python" - at UC Berkeley in 2013.

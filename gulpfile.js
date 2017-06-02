@@ -61,6 +61,10 @@ var paths = {
         src: [src + "/README.md", src + "/CNAME", src + "/favicon.ico"],
         dest: dest
     },
+    docs: {
+        src: [src + "/docs/**/*.*"],
+        dest: dest + "/docs"
+    },
     deploy: {
         src: [dest + "/**/{*,*.*}"] // Match files with & without extensions
     }
@@ -284,6 +288,13 @@ gulp.task("misc", function () {
         .pipe(gulp.dest(paths.misc.dest));
 });
 
+// Take any (new) misc files from src/ over to build/
+gulp.task("docs", function () {
+    return gulp.src(paths.docs.src)
+        .pipe(newer(paths.docs.dest))
+        .pipe(gulp.dest(paths.docs.dest));
+});
+
 // The build task will run all the individual build-related tasks above.
 gulp.task("build", [
     "copy-html",
@@ -292,6 +303,7 @@ gulp.task("build", [
     "images",
     "fonts",
     "misc",
+    "docs",
     "js-lint",
     "js-browserify",
     "js-libs"
@@ -313,6 +325,7 @@ gulp.task("watch", function () {
     gulp.watch(paths.sass.src, ["sass"]);
     gulp.watch(paths.images.src, ["images"]);
     gulp.watch(paths.fonts.src, ["fonts"]);
+    gulp.watch(paths.docs.src, ["docs"]);
 });
 
 // Start an express server that serves everything in build/ to localhost:8080/.

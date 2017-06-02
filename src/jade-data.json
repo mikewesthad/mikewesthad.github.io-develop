@@ -229,6 +229,30 @@
                 "led-off-small.jpg"
             ],
             "categories": ["sketches"]
+        },
+        {
+            "name": "berkeley-retinal-modeling",
+            "caption": "Modeling the Retina",
+            "images": [
+                "amacrine-cells-small.jpg"
+            ],
+            "categories": ["development"]
+        },
+        {
+            "name": "laf-network-analysis",
+            "caption": "Analyzing Brain Networks",
+            "images": [
+                "figure-1-small.jpg"
+            ],
+            "categories": ["development"]
+        },
+        {
+            "name": "laf-multisensory",
+            "caption": "Multisensory Integration",
+            "images": [
+                "multisensory-results-small.jpg"
+            ],
+            "categories": ["development"]
         }
     ]
 }

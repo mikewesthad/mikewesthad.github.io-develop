@@ -1,0 +1,29 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    -
+        var projectName = "laf-network-analysis";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "";
+        var projectHeadline = "I created & published a new metric for analyzing networks of neurons.";
+        var projectDetails = [
+            "2010 - 2012",
+            "Python/Matlab",
+            "Tags: Development"
+        ];
+
+block metaOpenGraph
+    - const ogTitle = "I created & published a new metric for analyzing networks of neurons.";
+    - const ogDescription = "";
+    - const ogImage = `https://www.mikewesthad.com/images/projects/${projectName}/figure-1-large.jpg`;
+    meta(property="og:type" content="website")
+    meta(property="og:url" content=`https://www.mikewesthad.com/projects/${projectName}/`)
+    meta(property="og:image" content=ogImage)
+    meta(property="og:title" content=ogTitle)
+    meta(property="og:description" content=ogDescription)
+
+block projectDescription
+    +titledSection("Overview")
+        p New technologies have generated unprecedented amounts of data about the structure of the brain. This has pushed us to develop new ways of visualizing and analyzing the data to make sense of the brain. In collaboration with an interdisciplinary team at Lafayette college, I developed a new metric for quickly analyzing the structure of connections within a network of neurons.
+
+        p The research was published in Neural Systems and Circuits #[a(href="https://neuralsystemsandcircuits.biomedcentral.com/articles/10.1186/2042-1001-2-7") here]. I gave a talk on this research at the Lehigh Valley Society for Neuroscience conference in 2010. I presented posters on the work at the 2008 and 2009 Annual Society for Neuroscience conference and at the 2009 International Conference on Cognitive and Neural Systems.
