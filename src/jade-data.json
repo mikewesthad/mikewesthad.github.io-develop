@@ -1,6 +1,16 @@
 {
     "projects": [
         {
+            "name": "j4kdart",
+            "caption": "Altered Reality App",
+            "images": [
+                "scene-7-small.jpg",
+                "scene-5-small.jpg",
+                "scene-1-small.jpg"
+            ],
+            "categories": ["development", "art"]
+        },
+        {
             "name": "laf-creative-coding",
             "caption": "Creative Coding Workshops",
             "images": [

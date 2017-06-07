@@ -1,0 +1,31 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    -
+        var projectName = "j4kdart";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "";
+        var projectHeadline = "I am building a cross-platform altered reality app for J4Kdart.";
+        var projectDetails = [
+            "2016 - Present",
+            "Client: <a href='http://g3tj4kd.com/home.html'>J4Kdart</a>",
+            "Unity",
+            "Tags: Development, Art"
+        ];
+
+block metaOpenGraph
+    - const ogTitle = "I am building a cross-platform altered reality app for J4Kdart.";
+    - const ogDescription = "";
+    - const ogImage = `https://www.mikewesthad.com/images/projects/${projectName}/scene-7-large.jpg`;
+    meta(property="og:type" content="website")
+    meta(property="og:url" content=`https://www.mikewesthad.com/projects/${projectName}/`)
+    meta(property="og:image" content=ogImage)
+    meta(property="og:title" content=ogTitle)
+    meta(property="og:description" content=ogDescription)
+
+block projectDescription
+    +fullWidthSection()
+        img(src=projectImagePath+"scenes.gif" style="width: 100%")
+
+    +titledSection("Overview")
+        p This work is currently in-progress. I am building a cross-platform mobile app for #[a(href="http://g3tj4kd.com/home.html") J4Kd] that combines abstract designs with 360° photography. The phone acts as a window into an altered reality. A viewer can move & rotate their phone to explore the space.
