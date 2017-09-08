@@ -1,0 +1,25 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    - 
+        var projectName = "sporadic-labs";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "Sporadic Labs";
+        var projectHeadline = ", a game development collaboration.";
+        var projectDetails = [
+            "2016 - Present",
+            "<a href='//github.com/sporadic-labs/octo-chainsaw'>GitHub</a>",
+            "Tags: Development"
+        ];
+
+block projectDescription
+
+    +fullWidthSection()
+        +demoLink("//github.com/sporadic-labs/octo-chainsaw")
+            img(src=projectImagePath+"game-demo-optimize.gif" style="width: 100%")
+    
+    +titledSection("Overview")
+        p Work-in-progress JS game, in collaboration with #[a(href="//rextwedt.com/") Rex Twedt]. See #[a(href="//github.com/sporadic-labs/octo-chainsaw") public repository] for the latest details. Built with phaser, babel, webpack, preact and mobx.
+
+    +titledSection("Libraries")
+        p In building the game, I created a series of libraries for JS game development: #[a(href="//github.com/mikewesthad/phaser-tiled-hull") Phaser Tiled Hull] (library for simplifying shapes) and #[a(href="//github.com/mikewesthad/phaser-navmesh") Phaser Navmesh] (library for super fast pathfinding).
