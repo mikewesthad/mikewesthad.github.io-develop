@@ -7,6 +7,12 @@
       "categories": ["development", "art"]
     },
     {
+      "name": "encoded-objects",
+      "caption": "Encoded Objects",
+      "images": ["bound-lines-small.jpg"],
+      "categories": ["art"]
+    },
+    {
       "name": "laf-creative-coding",
       "caption": "Creative Coding Workshops",
       "images": [

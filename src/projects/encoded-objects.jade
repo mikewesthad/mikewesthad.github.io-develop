@@ -1,0 +1,25 @@
+extend ../jade-layouts/_project-page.jade
+
+block variables
+    - 
+        var projectName = "encoded-objects";
+        var projectImagePath = "/images/projects/" + projectName + "/";
+        var projectTitle = "Encoded Objects";
+        var projectHeadline = " is an art collective focused on information and interactivity.";
+        var projectDetails = [
+            "2017 - Present",
+            "<a href='//github.com/encodedobjects'>GitHub</a>",
+            "Tags: Art"
+        ];
+
+block projectDescription
+
+    +fullWidthSection()
+        img(src=projectImagePath+"bound-lines-large.jpg" style="width: 100%")
+
+    +titledSection("Overview")
+        p Encoded Objects explores how information and interactivity can augment our understandings of image & object making. These investigations re-envision our current conditions by considering the history of art and information through a technological lens. Founding members Mike Hadley and #[a(href="http://jonathanrockfordportfolio.weebly.com/") Jonathan Rockford] integrate their varied experiences by merging the physical and digital realms into singular works of art.
+
+    +titledSection("Coming Soon")
+        p The above piece - Bound Lines #[a(href="//github.com/mikewesthad/ship-climate-data") (source code)] - is a digital print that visualizes 18th century ship logs and reveals the "footprints" of sailors as they explored the world. 
+        p More project documentation & Encoded Objects website coming soon.
