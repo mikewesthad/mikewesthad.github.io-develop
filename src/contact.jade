@@ -1,26 +1,22 @@
-//- extend ./jade-layouts/_basic-page.jade
+extend ./jade-layouts/_basic-page.jade
 
-//- block content
-//-     #contact.container
+block content
+    #contact.container
 
-//-         #title Get in touch
+        #title Get in Touch
 
-//-         #subtitle If you want to collaborate, have a project in mind, or you just want to say hello
+        #subtitle Looking to run a workshop on creative coding? Have a creative vision you want to bring to life? Or, maybe you just want to say hello? Drop me a line.
 
-//-         #contact-methods
-//-             #email.contact-method
-//-                 .icon
-//-                     i.fa.fa-envelope(aria-hidden="true")
-//-                 //- a(href="mailto:mikewesthad@gmail.com") mikewesthad@gmail.com
-//-             #github.contact-method
-//-                 .icon
-//-                     i.fa.fa-github(aria-hidden="true")
-//-                 //- a(href="//github.com/mikewesthad") mikewesthad
-//-             #twitter.contact-method
-//-                 .icon
-//-                     i.fa.fa-twitter(aria-hidden="true")
-//-                 //- a(href="twitter.com/mikewesthad") @mikewesthad
-//-             #linkedin.contact-method
-//-                 .icon
-//-                     i.fa.fa-linkedin(aria-hidden="true")
-//-                 //- a(href="//www.linkedin.com/in/michaelwesthadley") michaelwesthadley
+        form(action="https://formspree.io/mikewesthad@gmail.com" method="POST" class="contact-form")
+            .contact-form__group
+              label.contact-form__label(for="contact-name") Name
+              input.contact-form__input(type="text" name="name" id="contact-name")
+            .contact-form__group
+              label.contact-form__label(for="contact-email") Email
+              input.contact-form__input(type="email" name="_replyto" id="contact-email")
+            .contact-form__group
+              label.contact-form__label(for="contact-message") Message
+              textarea.contact-form__input(name="message" rows="4" id="contact-message")
+            input(class="contact-form__submit" type="submit" value="Send →")
+            //- input(type="hidden" name="_next" value="//site.io/thanks.html")
+            input(type="hidden" name="_subject" value="Portfolio Contact")

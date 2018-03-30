@@ -1,59 +1,101 @@
+.contact-form {
+  margin: 20px auto 0 auto;
+}
+
+.contact-form__label {
+  display: block;
+  padding: 0;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.contact-form__input:focus {
+  border: 2px solid $deep-purple;
+}
+
+.contact-form__input {
+  outline: 0;
+  display: block;
+  width: 100%;
+  border: 2px solid #d6d6d6;
+}
+
+.contact-form__group {
+  margin-bottom: 15px;
+}
+
+.contact-form__submit {
+  padding: 7px 20px;
+  display: block;
+  margin: 25px auto;
+  background-color: $deep-purple;
+  border: 0;
+  outline: none;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: darken($deep-purple, 10%);
+  }
+}
+
 #contact {
-    
-    font-family: "Raleway", sans-serif;
-    font-weight: 400;
+  max-width: 800px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
 
-    #title {
-        font-size: 27px;
-        text-align: center;
-        font-weight: 600;
-        margin-bottom: 15px;
+  #title {
+    font-size: 27px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  #subtitle {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  #contact-methods {
+    text-align: center;
+
+    .contact-method {
+      display: inline-block;
+      margin: 0 10px;
+      text-align: center;
+      font-size: 18px;
+
+      .icon {
+        margin: 0 auto;
+      }
+    }
+  }
+  .icon {
+    $base-icon-size: 40px;
+    font-size: $base-icon-size;
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    background-color: $deep-purple;
+    color: white;
+    border-radius: 50%;
+
+    &#email {
+      font-size: $base-icon-size * 33/40;
     }
 
-    #subtitle {
-        font-size: 22px;
-        text-align: center;
+    &#github {
+      font-size: $base-icon-size * 40/40;
     }
-    
-    #contact-methods {
-        text-align: center;
 
-        .contact-method {
-            display: inline-block;
-            margin: 0 10px;
-            text-align: center;
-            font-size: 18px;
-
-            .icon {
-                margin: 0 auto;
-            }
-        }
+    &#twitter {
+      font-size: $base-icon-size * 38/40;
     }
-    .icon {
-        $base-icon-size: 40px;
-        font-size: $base-icon-size;
-        width: 75px;
-        height: 75px;
-        line-height: 75px;
-        text-align: center;
-        background-color: $deep-purple;
-        color: white;
-        border-radius: 50%;
 
-        &#email {
-            font-size: $base-icon-size * 33/40;
-        }
-
-        &#github {
-            font-size: $base-icon-size * 40/40;
-        }
-
-        &#twitter {
-            font-size: $base-icon-size * 38/40;
-        }
-
-        &#linkedin {
-            font-size: $base-icon-size * 33/40;
-        }
+    &#linkedin {
+      font-size: $base-icon-size * 33/40;
     }
+  }
 }
