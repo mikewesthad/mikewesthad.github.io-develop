@@ -12,11 +12,11 @@ var utils = require("../../utilities.js");
  * @param {number} [offset=random] Where to start along the sinewave
  */
 function SinGenerator(p, min, max, angleIncrement, startingAngle) {
-    this._p = p;
-    this._min = utils.default(min, 0);
-    this._max = utils.default(max, 0);
-    this._increment = utils.default(angleIncrement, 0.1);
-    this._angle = utils.default(startingAngle, p.random(-1000000, 1000000));
+  this._p = p;
+  this._min = utils.default(min, 0);
+  this._max = utils.default(max, 0);
+  this._increment = utils.default(angleIncrement, 0.1);
+  this._angle = utils.default(startingAngle, p.random(-1000000, 1000000));
 }
 
 /**
@@ -24,34 +24,34 @@ function SinGenerator(p, min, max, angleIncrement, startingAngle) {
  * @param  {number} min Minimum value
  * @param  {number} max Maximum value
  */
-SinGenerator.prototype.setBounds = function (min, max) {
-    this._min = utils.default(min, this._min);
-    this._max = utils.default(max, this._max);
+SinGenerator.prototype.setBounds = function(min, max) {
+  this._min = utils.default(min, this._min);
+  this._max = utils.default(max, this._max);
 };
 
 /**
  * Update the angle increment (e.g. how fast we move through the sinwave)
  * @param  {number} increment New increment value
  */
-SinGenerator.prototype.setIncrement = function (increment) {
-    this._increment = utils.default(increment, this._increment);
+SinGenerator.prototype.setIncrement = function(increment) {
+  this._increment = utils.default(increment, this._increment);
 };
 
-/** 
+/**
  * Generate the next value
  * @return {number} A value between generators's min and max
  */
-SinGenerator.prototype.generate = function () {
-    this._update();
-    var n = this._p.sin(this._angle);
-    n = this._p.map(n, -1, 1, this._min, this._max);
-    return n;
+SinGenerator.prototype.generate = function() {
+  this._update();
+  var n = this._p.sin(this._angle);
+  n = this._p.map(n, -1, 1, this._min, this._max);
+  return n;
 };
 
 /**
  * Internal update method for generating next value
  * @private
  */
-SinGenerator.prototype._update = function () {
-    this._angle += this._increment;
+SinGenerator.prototype._update = function() {
+  this._angle += this._increment;
 };

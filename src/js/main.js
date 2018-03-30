@@ -28,32 +28,32 @@ onPageLoad();
 window.addEventListener("popstate", onPopState);
 
 function onPopState(e) {
-    // Loader stores custom data in the state - including the url and the query
-    var url = (e.state && e.state.url) || "/index.html";
-    var queryObject = (e.state && e.state.query) || {};
+  // Loader stores custom data in the state - including the url and the query
+  var url = (e.state && e.state.url) || "/index.html";
+  var queryObject = (e.state && e.state.query) || {};
 
-    if ((url === loader.getLoadedPath()) && (url === "/work.html")) {
-        // The current & previous loaded states were work.html, so just refilter
-        var category = queryObject.category || "all";
-        portfolioFilter.selectCategory(category);
-    } else {
-        // Load the new page
-        loader.loadPage(url, {}, false);
-    }
+  if (url === loader.getLoadedPath() && url === "/work.html") {
+    // The current & previous loaded states were work.html, so just refilter
+    var category = queryObject.category || "all";
+    portfolioFilter.selectCategory(category);
+  } else {
+    // Load the new page
+    loader.loadPage(url, {}, false);
+  }
 }
 
 function onPageLoad() {
-    // Reload all plugins/widgets
-    new HoverSlideshows();
-    portfolioFilter = new PortfolioFilter(loader);
-    slideshows.init();
-    objectFitImages();
-    smartquotes();
+  // Reload all plugins/widgets
+  new HoverSlideshows();
+  portfolioFilter = new PortfolioFilter(loader);
+  slideshows.init();
+  objectFitImages();
+  smartquotes();
 
-    // Slightly redundant, but update the main nav using the current URL. This
-    // is important if a page is loaded by typing a full URL (e.g. going
-    // directly to /work.html) or when moving from work.html to a project.
-    mainNav.setActiveFromUrl();
+  // Slightly redundant, but update the main nav using the current URL. This
+  // is important if a page is loaded by typing a full URL (e.g. going
+  // directly to /work.html) or when moving from work.html to a project.
+  mainNav.setActiveFromUrl();
 }
 
 // We've hit the landing page, load the about page
