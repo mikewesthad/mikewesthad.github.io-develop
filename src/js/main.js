@@ -50,6 +50,13 @@ function onPageLoad() {
   objectFitImages();
   smartquotes();
 
+  // Redirect data-internal-link hyperlinks through the loader
+  var internalLinks = $("a[data-internal-link]");
+  internalLinks.on("click", function(event) {
+    event.preventDefault();
+    loader.loadPage($(event.currentTarget).attr("href"), {}, true);
+  });
+
   // Slightly redundant, but update the main nav using the current URL. This
   // is important if a page is loaded by typing a full URL (e.g. going
   // directly to /work.html) or when moving from work.html to a project.
