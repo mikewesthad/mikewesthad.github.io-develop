@@ -7,7 +7,6 @@
  * - SASS -> CSS
  * - CommonJS modules via browserify
  * - A LiveReload server to trigger browser refresh upon saving
- * - A deploy task for uploading to GitHub Pages
  *
  * Run "gulp" to start the default task, which builds the site and serves it.
  * Run with the command line flag "gulp -p" or "gulp --production" to enable
@@ -64,9 +63,6 @@ var paths = {
   docs: {
     src: [src + "/docs/**/*.*"],
     dest: dest + "/docs"
-  },
-  deploy: {
-    src: [dest + "/**/{*,*.*}"] // Match files with & without extensions
   }
 };
 
@@ -81,7 +77,6 @@ var liveReload = require("gulp-livereload");
 var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
 var newer = require("gulp-newer");
-var deployGit = require("gulp-deploy-git");
 var open = require("gulp-open");
 var gutil = require("gulp-util");
 var browserify = require("browserify");
@@ -381,25 +376,6 @@ gulp.task("open", function() {
 
 // The build task will run all the individual run-related tasks above.
 gulp.task("run", ["watch", "express-server", "open"]);
-
-// -- DEPLOYING TASKS ----------------------------------------------------------
-// These gulp tasks handle everything related to deploying the site to live
-// server(s).
-
-gulp.task("push:git", function() {
-  return gulp.src(paths.deploy.src, { read: false }).pipe(
-    deployGit({
-      prefix: dest,
-      repository: "https://github.com/mikewesthad/mikewesthad.github.io.git",
-      message: "Rebuild from mikewesthad.github.io-develop"
-    })
-  );
-});
-
-// Build, deploy build/ folder to gh-pages and then clean up
-gulp.task("deploy:git", function() {
-  return runSequence("build", "push:git");
-});
 
 // -- CLEANING TASKS ----------------------------------------------------------
 // These gulp tasks handle deleting unnecessary files

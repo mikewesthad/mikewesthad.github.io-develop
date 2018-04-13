@@ -7,8 +7,7 @@
     "prettier": "prettier --write \"./src/js/!(libs)/**/*.js\"",
     "gulp": "gulp",
     "predeploy": "npm run gulp build",
-    "deploy":
-      "gh-pages --dist build --repo https://github.com/mikewesthad/mikewesthad.github.io.git --branch master"
+    "deploy": "gh-pages --dist build --repo https://github.com/mikewesthad/mikewesthad.github.io.git --branch master"
   },
   "prettier": {
     "printWidth": 100
@@ -35,7 +34,6 @@
     "gulp-autoprefixer": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-data": "^1.2.1",
-    "gulp-deploy-git": "^0.5.3",
     "gulp-eslint": "^3.0.1",
     "gulp-if": "^2.0.2",
     "gulp-image-resize": "^0.12.0",
