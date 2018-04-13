@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "prettier": "prettier --write \"./src/js/!(libs)/**/*.js\"",
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "predeploy": "npm run gulp build",
+    "deploy":
+      "gh-pages --dist build --repo https://github.com/mikewesthad/mikewesthad.github.io.git --branch master"
   },
   "prettier": {
     "printWidth": 100
@@ -55,6 +58,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "gh-pages": "^1.1.0",
     "prettier": "^1.11.1"
   }
 }
