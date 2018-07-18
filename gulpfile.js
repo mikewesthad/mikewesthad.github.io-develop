@@ -362,10 +362,13 @@ gulp.task("express-server", function() {
 });
 
 gulp.task("ngrok", function() {
-  ngrok.connect({ proto: "http", addr: 8080 }, function(err, url) {
-    if (err) console.error(err);
-    else console.log("Hosting localserver at: " + url);
-  });
+  ngrok.connect(
+    { proto: "http", addr: 8080 },
+    function(err, url) {
+      if (err) console.error(err);
+      else console.log("Hosting localserver at: " + url);
+    }
+  );
 });
 
 // Automatically open localhost:8080/ in the browser using whatever the default
