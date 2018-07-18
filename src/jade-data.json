@@ -16,9 +16,9 @@
       "name": "laf-creative-coding",
       "caption": "Creative Coding Workshops",
       "images": [
-        "02-conditionals-small.jpg",
-        "04-image-small.jpg",
-        "05-video-bonus-small.jpg"
+        "laf-02-conditionals-small.jpg",
+        "laf-04-image-small.jpg",
+        "laf-05-video-bonus-small.jpg"
       ],
       "categories": ["teaching"]
     },
