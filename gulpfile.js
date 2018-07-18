@@ -15,7 +15,8 @@
 
 // -- PATHS --------------------------------------------------------------------
 
-var src = "src";
+const path = require("path");
+var src = path.resolve(__dirname, "src");
 var dest = "build";
 var paths = {
   html: {
@@ -25,7 +26,7 @@ var paths = {
   jade: {
     src: [src + "/**/*.jade"],
     exclude: ["!" + src + "/**/_*.jade"],
-    dataFile: src + "/jade-data.json",
+    dataFile: path.resolve(src, "./data/jade-data.js"),
     dest: dest
   },
   sass: {
@@ -126,13 +127,7 @@ gulp.task("copy-html", function() {
 gulp.task("jade", function() {
   return gulp
     .src(paths.jade.src.concat(paths.jade.exclude))
-    .pipe(
-      data(function(file, callback) {
-        return fs.readFile(paths.jade.dataFile, "utf8", function(err, data) {
-          callback(err, JSON.parse(data));
-        });
-      })
-    )
+    .pipe(data(() => require(paths.jade.dataFile)))
     .pipe(pug())
     .on("error", function(err) {
       gutil.log(err);
