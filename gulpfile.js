@@ -74,18 +74,14 @@ var gulp = require("gulp");
 var sass = require("gulp-sass");
 var autoprefixer = require("gulp-autoprefixer");
 var sourcemaps = require("gulp-sourcemaps");
-var liveReload = require("gulp-livereload");
 var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
 var newer = require("gulp-newer");
-var open = require("gulp-open");
 var gutil = require("gulp-util");
 var browserify = require("browserify");
 var source = require("vinyl-source-stream");
 var buffer = require("vinyl-buffer");
 var del = require("del");
-var express = require("express");
-var fs = require("fs");
 var runSequence = require("run-sequence");
 var gulpif = require("gulp-if");
 var pug = require("gulp-pug");
@@ -95,6 +91,7 @@ var eslint = require("gulp-eslint");
 var plumber = require("gulp-plumber");
 var beep = require("beepbeep");
 var ngrok = require("ngrok");
+const browserSync = require("browser-sync").create();
 
 // Check the command line to see if this is a production build
 var isProduction = gutil.env.p || gutil.env.production;
@@ -121,7 +118,7 @@ gulp.task("copy-html", function() {
   return gulp
     .src(paths.html.src)
     .pipe(gulp.dest(paths.html.dest))
-    .pipe(liveReload());
+    .pipe(browserSync.stream());
 });
 
 gulp.task("jade", function() {
@@ -134,7 +131,7 @@ gulp.task("jade", function() {
       this.emit("end");
     })
     .pipe(gulp.dest(paths.jade.dest))
-    .pipe(liveReload());
+    .pipe(browserSync.stream());
 });
 
 // Turn SASS in src/ into css in build/, autoprefixing CSS vendor prefixes and
@@ -168,7 +165,7 @@ gulp.task("sass", function() {
     )
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.sass.dest))
-    .pipe(liveReload());
+    .pipe(browserSync.stream());
 });
 
 // Combine, sourcemap and uglify vendor libraries (e.g. bootstrap, jquery, etc.)
@@ -188,7 +185,7 @@ gulp.task("js-libs", function() {
       .pipe(gulpif(isProduction, uglify()))
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(paths.jsLibs.dest))
-      .pipe(liveReload())
+      .pipe(browserSync.stream())
   );
 });
 
@@ -216,7 +213,7 @@ gulp.task("js-browserify", function() {
       .on("error", gutil.log)
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(paths.js.dest))
-      .pipe(liveReload())
+      .pipe(browserSync.stream())
   );
 });
 
@@ -338,7 +335,6 @@ gulp.task("build", [
 // Watch for changes and then trigger the appropraite build task.  This also
 // starts a LiveReload server that can tell the browser to refresh the page.
 gulp.task("watch", function() {
-  liveReload.listen(); // Start the LiveReload server
   gulp.watch(paths.html.src, ["copy-html"]);
   gulp.watch(paths.jade.src.concat(paths.jade.dataFile), ["jade"]);
   gulp.watch(paths.jsLibs.src, ["js-libs"]);
@@ -349,11 +345,12 @@ gulp.task("watch", function() {
   gulp.watch(paths.docs.src, ["docs"]);
 });
 
-// Start an express server that serves everything in build/ to localhost:8080/.
-gulp.task("express-server", function() {
-  var app = express();
-  app.use(express.static(dest));
-  app.listen(8080);
+gulp.task("browser-sync", function() {
+  browserSync.init({
+    server: {
+      baseDir: "./build"
+    }
+  });
 });
 
 gulp.task("ngrok", function() {
@@ -366,14 +363,7 @@ gulp.task("ngrok", function() {
   );
 });
 
-// Automatically open localhost:8080/ in the browser using whatever the default
-// browser.
-gulp.task("open", function() {
-  return gulp.src(dest).pipe(open({ uri: "http://127.0.0.1:8080" }));
-});
-
-// The build task will run all the individual run-related tasks above.
-gulp.task("run", ["watch", "express-server", "open"]);
+gulp.task("run", ["watch", "browser-sync"]);
 
 // -- CLEANING TASKS ----------------------------------------------------------
 // These gulp tasks handle deleting unnecessary files
