@@ -17,6 +17,8 @@ MainNav.prototype.setActiveFromUrl = function() {
     this._activateLink(this._$navLinks.filter("#about-link"));
   } else if (url === "/work.html") {
     this._activateLink(this._$navLinks.filter("#work-link"));
+  } else if (url === "/blog.html") {
+    this._activateLink(this._$navLinks.filter("#blog-link"));
   } else if (url === "/contact.html") {
     this._activateLink(this._$navLinks.filter("#contact-link"));
   }

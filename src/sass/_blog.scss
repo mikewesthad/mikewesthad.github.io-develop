@@ -1,0 +1,59 @@
+.blog-post {
+  margin-bottom: 30px;
+
+  &:first-child {
+    margin-top: 20px;
+  }
+}
+
+.blog-post__title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.blog-post__description {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.blog-post__date {
+  color: #6d6d6d;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.blog-post__link {
+  display: block;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.blog-post__thumbnail {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@include breakpoint-only(xs) {
+  .blog-post__title {
+    font-size: 18px;
+  }
+
+  .blog-post__description {
+    font-size: 15px;
+  }
+
+  .blog-post__date {
+    font-size: 15px;
+  }
+
+  .blog-post__link {
+    font-size: 15px;
+  }
+
+  .blog-post__thumbnail {
+    max-width: 500px;
+    margin-bottom: 20px;
+  }
+}

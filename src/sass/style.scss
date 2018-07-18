@@ -8,8 +8,8 @@ $fa-font-path: "fonts/";
 @import "fonts";
 
 html {
-    min-height: 100%;
-    position: relative;
+  min-height: 100%;
+  position: relative;
 }
 
 body {
@@ -24,3 +24,4 @@ body {
 @import "contact";
 @import "project-page";
 @import "image-gallery";
+@import "blog";
